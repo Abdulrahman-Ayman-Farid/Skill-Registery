@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Claude Warm Editorial Light Mode */
+    --color-claude-bg: #FAF8F5;
+    --color-claude-sidebar: #F3EFEA;
+    --color-claude-card: #FFFFFF;
+    --color-claude-surface: #F8F5EF;
+    --color-claude-surface-hover: #EFE9E0;
+    --color-claude-border: #E5DFD5;
+    --color-claude-border-subtle: #EFEAE2;
+    --color-claude-text: #1F1E1B;
+    --color-claude-text-muted: #645F57;
+    --color-claude-text-subtle: #918B80;
+    --color-claude-terracotta: #C15F3C;
+    --color-claude-terracotta-hover: #A84E2E;
+    --color-claude-terracotta-bg: rgba(193, 95, 60, 0.08);
+    --color-claude-terracotta-border: rgba(193, 95, 60, 0.25);
+    --color-claude-amber: #D97706;
+
+    /* Gemini Cosmic & Neon Dark Mode */
+    --color-gemini-bg: #070A13;
+    --color-gemini-sidebar: #0A0F1D;
+    --color-gemini-card: #0D1424;
+    --color-gemini-surface: #111B30;
+    --color-gemini-surface-hover: #16233E;
+    --color-gemini-border: rgba(99, 102, 241, 0.22);
+    --color-gemini-border-subtle: rgba(148, 163, 184, 0.12);
+    --color-gemini-text: #F8FAFC;
+    --color-gemini-text-muted: #94A3B8;
+    --color-gemini-text-subtle: #64748B;
+    --color-gemini-indigo: #6366F1;
+    --color-gemini-cyan: #06B6D4;
+    --color-gemini-neon-glow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 35px rgba(6, 182, 212, 0.2);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 130, 120, 0.25);
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 130, 120, 0.45);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.45);
+}
+
+/* Neon glow utility classes for Dark (Gemini) Mode */
+.dark .gemini-glow-indigo {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 35px rgba(99, 102, 241, 0.15);
+}
+.dark .gemini-glow-cyan {
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.15);
+}
+.dark .gemini-border-glow {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+}
+.dark .gemini-text-glow {
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+/* Claude tactile warm shadows for Light Mode */
+.claude-card-shadow {
+  box-shadow: 0 1px 3px rgba(45, 35, 25, 0.04), 0 4px 12px rgba(45, 35, 25, 0.03);
+}
+.claude-card-shadow:hover {
+  box-shadow: 0 4px 16px rgba(45, 35, 25, 0.08), 0 1px 4px rgba(45, 35, 25, 0.04);
+}

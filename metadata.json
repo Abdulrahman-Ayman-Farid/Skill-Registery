@@ -1,0 +1,6 @@
+{
+  "name": "AI Agent Skill Registry",
+  "description": "A centralized, developer-first registry to define, curate, test, and export production-ready AI agent skills and tool calling schemas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
