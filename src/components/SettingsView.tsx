@@ -4,7 +4,9 @@ import {
   Database,
   RotateCcw,
   Plus,
+  MessageCircle,
 } from 'lucide-react';
+import { getDiscordWebhookUrl, setDiscordWebhookUrl } from '../services/discordShareService.ts';
 import { User } from '../types/skill.ts';
 import { useToast } from './Toast.tsx';
 
@@ -29,6 +31,15 @@ export function SettingsView({
   const [newUserName, setNewUserName] = useState('');
   const [newUserEmail, setNewUserEmail] = useState('');
   const [showAddUser, setShowAddUser] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState(getDiscordWebhookUrl());
+  const [isSavingWebhook, setIsSavingWebhook] = useState(false);
+
+  const handleSaveWebhook = () => {
+    setIsSavingWebhook(true);
+    setDiscordWebhookUrl(webhookUrl);
+    showToast('Webhook Saved', 'Discord Webhook URL has been saved.');
+    setIsSavingWebhook(false);
+  };
 
   const handleCreateUserSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -166,6 +177,34 @@ export function SettingsView({
             );
           })}
         </div>
+      </div>
+
+      {/* Discord Webhook Section */}
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-white/10 bg-[#FFFFFF] dark:bg-white/5 p-6 space-y-4 shadow-2xl shadow-black/5 dark:shadow-black/30">
+        <div className="flex items-center gap-2">
+          <MessageCircle className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
+          <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm">Discord Webhook</h3>
+        </div>
+
+        <p className="text-[#645F57] dark:text-slate-400 leading-relaxed">
+          Configure a Discord Webhook URL to share skills directly to your team's Discord channel.
+        </p>
+
+        <input
+          type="url"
+          placeholder="https://discord.com/api/webhooks/..."
+          value={webhookUrl}
+          onChange={(e) => setWebhookUrl(e.target.value)}
+          className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#2a2a2a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-400"
+        />
+
+        <button
+          onClick={handleSaveWebhook}
+          disabled={isSavingWebhook}
+          className="px-4 py-1.5 rounded-lg bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white font-semibold text-xs shadow-md shadow-[#C15F3C]/20"
+        >
+          {isSavingWebhook ? 'Saving...' : 'Save Webhook'}
+        </button>
       </div>
 
       {/* Storage Health & Maintenance */}

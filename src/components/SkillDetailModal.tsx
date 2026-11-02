@@ -18,7 +18,9 @@ import {
   History,
   FileCode,
   RotateCcw,
+  MessageCircle,
 } from 'lucide-react';
+import { shareSkillToDiscord, getDiscordWebhookUrl } from '../services/discordShareService.ts';
 import { Skill } from '../types/skill.ts';
 import {
   generateToolSchema,
@@ -90,6 +92,22 @@ function SkillDetailModalInner({
   const [showQuickTestPanel, setShowQuickTestPanel] = useState(false);
   const [quickTestView, setQuickTestView] = useState<'response' | 'inputs' | 'full'>('response');
   const [copiedQuickTest, setCopiedQuickTest] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
+
+  const handleShareToDiscord = async () => {
+    setIsSharing(true);
+    try {
+      const webhookUrl = getDiscordWebhookUrl();
+      const result = await shareSkillToDiscord(skill, webhookUrl);
+      if (result.success) {
+        showToast('Shared to Discord', `"${skill.name}" was posted to your Discord channel.`, 'success');
+      } else {
+        showToast('Share Failed', result.error || 'Failed to share to Discord', 'error');
+      }
+    } finally {
+      setIsSharing(false);
+    }
+  };
 
   const handleQuickTest = () => {
     setIsQuickTesting(true);
@@ -233,6 +251,17 @@ function SkillDetailModalInner({
             >
               <Play className={`w-3.5 h-3.5 fill-current ${isQuickTesting ? 'animate-spin' : ''}`} />
               <span>{isQuickTesting ? 'Testing...' : 'Quick Test'}</span>
+            </button>
+
+            {/* Share to Discord */}
+            <button
+              onClick={handleShareToDiscord}
+              disabled={isSharing}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-[#1f1f1f] dark:hover:bg-[#2a2a2a] text-[#1F1E1B] dark:text-slate-200 text-xs font-semibold border border-[#E5DFD5] dark:border-[#3a3a3a] transition-colors disabled:opacity-50 cursor-pointer"
+              title="Share this skill as JSON to a Discord channel via webhook"
+            >
+              <MessageCircle className={`w-3.5 h-3.5 ${isSharing ? 'animate-pulse' : ''}`} />
+              <span>{isSharing ? 'Sharing...' : 'Share to Discord'}</span>
             </button>
 
             <button
