@@ -142,8 +142,8 @@ export function Navbar({
         <button
           onClick={onToggleTheme}
           className="p-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-amber-300 shadow-sm shadow-amber-500/20 transition-all"
-          aria-label={isDarkMode ? 'Switch to Claude Light mode' : 'Switch to Gemini Dark mode'}
-          title={isDarkMode ? 'Switch to Claude Light mode' : 'Switch to Gemini Dark mode'}
+          aria-label={isDarkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}
+          title={isDarkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}
         >
           {isDarkMode ? (
             <Sun className="w-4 h-4 text-amber-400" />

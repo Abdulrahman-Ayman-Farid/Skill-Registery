@@ -92,6 +92,19 @@ export function AgentExportModal({
     showToast('Downloaded Config', `Saved as ${a.download}`);
   };
 
+  const handleExportToClaude = () => {
+    const claudeBundle = generateAgentBundle(selectedSkills, 'anthropic');
+    const json = JSON.stringify(claudeBundle, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `claude-agent-config-${selectedSkills.length}-skills.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Exported to Claude', 'Claude config downloaded.');
+  };
+
   return (
     <div
       onClick={onClose}
@@ -248,6 +261,14 @@ export function AgentExportModal({
                   <span>Copy Agent JSON</span>
                 </>
               )}
+            </button>
+
+            <button
+              onClick={handleExportToClaude}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1f1f1f] hover:bg-[#F3EFEA] dark:hover:bg-slate-700 text-[#3D3B39] dark:text-slate-200 text-xs font-semibold transition-all shadow-xs"
+            >
+              <Cpu className="w-3.5 h-3.5" />
+              <span>Export to Claude</span>
             </button>
 
             <button

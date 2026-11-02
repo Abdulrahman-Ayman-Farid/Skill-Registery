@@ -56,11 +56,11 @@
     --color-gemini-neon-glow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 35px rgba(6, 182, 212, 0.2);
 
     /* Glassmorphism theme */
-    --glass-bg: rgba(245, 158, 11, 0.10);
-    --glass-bg-strong: rgba(245, 158, 11, 0.18);
-    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-strong: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.12);
     --glass-blur: 24px;
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(245, 158, 11, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
   .dark {
@@ -72,30 +72,23 @@
     --color-vault-surface-hover: #2a2a2a;
     --color-vault-border: #3a3a3a;
     --color-vault-border-subtle: #2a2a2a;
-    --color-vault-text: #ffffff;
-    --color-vault-text-muted: #9ca3af;
+    --color-vault-text: #F5F5F5;
+    --color-vault-text-muted: #9A9A9A;
     --color-vault-text-subtle: #6b7280;
-    --color-vault-accent: #f59e0b;
-    --color-vault-accent-hover: #fb923c;
-    --color-vault-accent-bg: rgba(245, 158, 11, 0.1);
-    --color-vault-accent-border: rgba(245, 158, 11, 0.3);
+    --color-vault-accent: #C15F3C;
+    --color-vault-accent-hover: #A84E2E;
+    --color-vault-accent-bg: rgba(193, 95, 60, 0.12);
+    --color-vault-accent-border: rgba(193, 95, 60, 0.35);
   }
 
   body {
     font-family: var(--font-sans);
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #0a0a0a 100%);
+    background: #FAF8F5;
     min-height: 100vh;
     transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(236, 72, 153, 0.15) 100%);
-  }
+  .dark body { background: #0A0A0A; }
 
   #root {
     position: relative;
@@ -120,13 +113,13 @@
   border-radius: 4px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(245, 158, 11, 0.25);
+  background: rgba(193, 95, 60, 0.25);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(140, 130, 120, 0.45);
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 158, 11, 0.45);
+  background: rgba(193, 95, 60, 0.45);
 }
 
 /* Neon glow utility classes for Dark (Gemini) Mode */
@@ -179,16 +172,16 @@
   box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
-/* Dark-mode amber glow utility classes */
-.dark .amber-glow-accent { box-shadow: 0 0 20px rgba(245, 158, 11, 0.35), 0 0 35px rgba(251, 146, 60, 0.15); }
-.dark .amber-glow-soft { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
-.dark .amber-border-glow { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
-.dark .amber-text-glow { text-shadow: 0 0 12px rgba(245, 158, 11, 0.6), 0 0 20px rgba(251, 146, 60, 0.4); }
+/* Dark-mode terracotta glow utility classes */
+.dark .amber-glow-accent { box-shadow: 0 0 20px rgba(193, 95, 60, 0.35), 0 0 35px rgba(193, 95, 60, 0.15); }
+.dark .amber-glow-soft { box-shadow: 0 0 15px rgba(193, 95, 60, 0.2); }
+.dark .amber-border-glow { border-color: rgba(193, 95, 60, 0.4); box-shadow: 0 0 15px rgba(193, 95, 60, 0.2); }
+.dark .amber-text-glow { text-shadow: 0 0 12px rgba(193, 95, 60, 0.6), 0 0 20px rgba(193, 95, 60, 0.4); }
 .dark .amber-card-shadow { box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
-.dark .amber-card-shadow:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.15); }
+.dark .amber-card-shadow:hover { box-shadow: 0 0 30px rgba(193, 95, 60, 0.15); }
 
 @layer utilities {
   .glass { background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
   .glass-strong { background: var(--glass-bg-strong); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid rgba(255, 255, 255, 0.20); box-shadow: var(--glass-shadow); }
-  .glass-glow { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.4)); }
+  .glass-glow { filter: drop-shadow(0 0 12px rgba(193, 95, 60, 0.4)); }
 }
