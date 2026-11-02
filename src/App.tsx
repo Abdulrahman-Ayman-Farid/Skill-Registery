@@ -1,29 +1,20 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Boxes,
-  Compass,
   Plus,
   Download,
   Search,
-  Filter,
   Grid,
   List,
-  Sparkles,
   ArrowUpDown,
-  Layers,
   Star,
   ExternalLink,
-  ShieldCheck,
-  RotateCcw,
-  SlidersHorizontal,
   X,
   Code2,
-  Cpu,
   ChevronDown,
   Network,
   CheckSquare,
   Square,
-  Share2,
 } from 'lucide-react';
 import {
   Skill,
@@ -37,10 +28,6 @@ import {
 import { storageService } from './services/storageService.ts';
 import { MARKETPLACE_SKILLS } from './data/marketplaceSkills.ts';
 import { VALID_CATEGORIES, VALID_EXECUTION_TYPES } from './utils/validation.ts';
-import {
-  getCategoryBadgeClass,
-  getExecutionTypeBadgeClass,
-} from './utils/uiHelpers.ts';
 
 import { ToastProvider, useToast } from './components/Toast.tsx';
 import { Navbar } from './components/Navbar.tsx';

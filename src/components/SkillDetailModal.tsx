@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   X,
   Copy,
@@ -20,11 +20,6 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { Skill } from '../types/skill.ts';
-import {
-  getCategoryBadgeClass,
-  getExecutionTypeBadgeClass,
-  getStatusBadgeClass,
-} from '../utils/uiHelpers.ts';
 import {
   generateToolSchema,
   generateAgentInstruction,

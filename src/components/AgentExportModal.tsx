@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   X,
   Copy,
   Check,
   Download,
   Cpu,
-  CheckSquare,
-  Square,
   FileJson,
 } from 'lucide-react';
 import { Skill } from '../types/skill.ts';

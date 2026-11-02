@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   X,
   Download,
   Star,
   ExternalLink,
-  ShieldCheck,
-  Clock,
   Layers,
   Wand2,
   Key,
 } from 'lucide-react';
 import { Skill, SkillConfig } from '../types/skill.ts';
-import {
-  getCategoryBadgeClass,
-  getExecutionTypeBadgeClass,
-} from '../utils/uiHelpers.ts';
 
 interface MarketplaceInstallModalProps {
   skill: Skill | null;

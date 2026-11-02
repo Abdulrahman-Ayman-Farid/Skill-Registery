@@ -7,14 +7,9 @@ import {
   ZoomIn,
   ZoomOut,
   RotateCcw,
-  Sparkles,
-  Link as LinkIcon,
   Unlink,
-  Eye,
   Layers,
   ArrowRight,
-  Info,
-  Maximize2,
   Key,
   ShieldAlert,
 } from 'lucide-react';
@@ -24,9 +19,7 @@ import {
   checkWouldCreateCycle,
   GraphNode,
   GraphLink,
-  GraphAnalysisResult,
   CyclePath,
-  SharedDefinition,
 } from '../utils/graphAnalysis.ts';
 import { useToast } from './Toast.tsx';
 
@@ -52,7 +45,7 @@ const CATEGORY_COLORS: Record<string, { fill: string; stroke: string; text: stri
 export function AgentDependencyGraph({
   skills,
   selectedSkillIds,
-  onToggleSelectSkill,
+  onToggleSelectSkill: _onToggleSelectSkill,
   onUpdateSkillDependencies,
   isDarkMode = true,
 }: AgentDependencyGraphProps) {

@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Users,
-  ShieldCheck,
   Database,
   RotateCcw,
-  Key,
   Plus,
-  Trash2,
-  CheckCircle2,
-  Server,
 } from 'lucide-react';
 import { User } from '../types/skill.ts';
 import { useToast } from './Toast.tsx';

@@ -231,7 +231,7 @@ class StorageService {
     return this.saveSkill(reverted);
   }
 
-  public async deleteSkill(id: string, userId?: string): Promise<void> {
+  public async deleteSkill(id: string, _userId?: string): Promise<void> {
     await this.request<void>(`/api/skills/${encodeURIComponent(id)}`, {
       method: 'DELETE',
     });

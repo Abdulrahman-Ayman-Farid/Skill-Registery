@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Download,
   Upload,
-  FileCode,
   CheckCircle2,
   AlertCircle,
   Copy,
   Check,
-  FileJson,
-  RotateCcw,
 } from 'lucide-react';
 import { Skill } from '../types/skill.ts';
 import { storageService } from '../services/storageService.ts';
-import { parseSkillDefinition, validateSkill } from '../utils/validation.ts';
+import { parseSkillDefinition } from '../utils/validation.ts';
 import { useToast } from './Toast.tsx';
 
 interface ImportExportViewProps {

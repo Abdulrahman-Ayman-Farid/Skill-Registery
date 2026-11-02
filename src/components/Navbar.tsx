@@ -10,7 +10,6 @@ import {
   UserCheck,
   Menu,
   X,
-  Sparkles,
 } from 'lucide-react';
 import { User } from '../types/skill.ts';
 

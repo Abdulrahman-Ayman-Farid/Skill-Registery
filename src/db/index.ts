@@ -9,8 +9,7 @@ url.searchParams.delete('sslmode');
 
 export const db = drizzle(
   postgres(url.toString(), {
-    ssl: 'require',
-    tls: { rejectUnauthorized: false },
+    ssl: { rejectUnauthorized: false },
     connect_timeout: 8,
   }),
   { schema },

@@ -4,10 +4,8 @@ import {
   Plus,
   Trash2,
   AlertCircle,
-  CheckCircle2,
   Code2,
   FormInput,
-  Sparkles,
   Info,
   Layers,
   Wand2,
@@ -32,8 +30,6 @@ import {
   VALID_EXECUTION_TYPES,
   VALID_STATUSES,
 } from '../utils/validation.ts';
-import { detectCycles } from '../utils/graphAnalysis.ts';
-import { storageService } from '../services/storageService.ts';
 import { useToast } from './Toast.tsx';
 
 interface SkillEditorModalProps {
