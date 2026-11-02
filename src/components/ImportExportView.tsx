@@ -141,7 +141,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
               Export all {skills.length} skills in your private registry as a structured JSON bundle, including parameter schemas, execution configurations, and agent tags.
             </p>
 
-            <div className="mt-4 p-3 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/30 font-mono text-[11px] text-[#645F57] dark:text-slate-400">
+            <div className="mt-4 bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 overflow-auto font-mono text-[11px] text-[#645F57] dark:text-slate-400">
               <div className="flex items-center justify-between text-[#1F1E1B] dark:text-slate-300 font-semibold mb-1">
                 <span>Registry Snapshot:</span>
                 <span className="text-[#C15F3C] dark:text-cyan-400">{skills.length} skills</span>
@@ -170,7 +170,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
 
             <button
               onClick={handleDownloadRegistry}
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-indigo-600 dark:via-indigo-500 dark:to-cyan-500 active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-[#C15F3C] dark:to-[#A84E2E] active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(193,95,60,0.4)] transition-all"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Backup</span>
@@ -224,7 +224,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
             onChange={(e) => setImportText(e.target.value)}
             rows={6}
             placeholder={`Paste ${importFormat.toUpperCase()} skill definition here...`}
-            className="w-full bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/30 rounded-xl p-3 font-mono text-xs text-[#1F1E1B] dark:text-slate-200 focus:border-[#C15F3C] dark:focus:border-cyan-400 outline-none"
+            className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 font-mono text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 outline-none"
           />
 
           {importSuccessMessage && (
@@ -251,7 +251,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
           <button
             onClick={handleProcessImport}
             disabled={!importText.trim()}
-            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-emerald-600 dark:to-teal-600 active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all disabled:opacity-50"
+            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-[#C15F3C] dark:to-[#A84E2E] active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(193,95,60,0.3)] transition-all disabled:opacity-50"
           >
             <Upload className="w-3.5 h-3.5" />
             <span>Validate & Import Skills</span>

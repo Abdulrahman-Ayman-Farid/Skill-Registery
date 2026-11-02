@@ -225,8 +225,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                 onClick={() => setActiveSnippet(key)}
                 className={`px-3 py-1 rounded-lg uppercase tracking-wider text-[10px] transition-all ${
                   activeSnippet === key
-                    ? 'bg-[#C15F3C] text-white dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 dark:text-white shadow-sm'
-                    : 'text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200'
+                    ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                    : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
                 }`}
               >
                 {key}
@@ -239,10 +239,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           Copy schemas directly from the <span className="text-[#C15F3C] dark:text-cyan-300 font-medium">My Registry</span> card or use the <span className="text-[#C15F3C] dark:text-cyan-300 font-medium">Export Agent Config</span> tool to generate full multi-tool packages.
         </p>
 
-        <div className="relative rounded-2xl border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-[#070A13] p-4 font-mono text-xs text-[#1F1E1B] dark:text-indigo-200 overflow-x-auto">
+        <div className="relative bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 overflow-auto font-mono text-xs text-[#1F1E1B] dark:text-indigo-200">
           <button
             onClick={() => handleCopy(snippets[activeSnippet], activeSnippet.toUpperCase())}
-            className="absolute top-3 right-3 p-1.5 rounded-lg border border-[#E5DFD5] dark:border-slate-700 bg-[#FFFFFF] dark:bg-slate-800 hover:bg-[#EFEAE2] dark:hover:bg-slate-700 text-[#3D3B39] dark:text-slate-300 hover:text-[#1F1E1B] dark:hover:text-white transition-colors shadow-sm"
+            className="absolute top-3 right-3 p-1.5 rounded-lg border border-[#E5DFD5] dark:border-slate-700 bg-[#FFFFFF] dark:bg-slate-800 text-[#918B80] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors shadow-sm"
             title="Copy snippet"
           >
             {copiedKey === activeSnippet.toUpperCase() ? (

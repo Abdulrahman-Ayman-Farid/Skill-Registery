@@ -56,7 +56,7 @@ export function SettingsView({
       </div>
 
       {/* Account Isolation Section */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 vault-card-shadow">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-[#C15F3C] dark:text-cyan-400" />
@@ -91,7 +91,7 @@ export function SettingsView({
                   placeholder="e.g. Sarah Connor"
                   value={newUserName}
                   onChange={(e) => setNewUserName(e.target.value)}
-                  className="w-full bg-[#FFFFFF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 rounded-lg px-3 py-1.5 text-xs text-[#1F1E1B] dark:text-slate-100 outline-none focus:border-[#C15F3C] dark:focus:border-cyan-400 mt-1"
+                  className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 mt-1"
                 />
               </div>
 
@@ -103,7 +103,7 @@ export function SettingsView({
                   placeholder="sarah@example.ai"
                   value={newUserEmail}
                   onChange={(e) => setNewUserEmail(e.target.value)}
-                  className="w-full bg-[#FFFFFF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 rounded-lg px-3 py-1.5 text-xs text-[#1F1E1B] dark:text-slate-100 outline-none focus:border-[#C15F3C] dark:focus:border-cyan-400 mt-1"
+                  className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 mt-1"
                 />
               </div>
             </div>
@@ -133,7 +133,7 @@ export function SettingsView({
             return (
               <div
                 key={u.id}
-                className={`p-3.5 rounded-xl border flex items-center justify-between transition-colors ${
+                className={`p-3.5 rounded-xl border flex items-center justify-between transition-colors hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] ${
                   isCurrent
                     ? 'border-[#C15F3C]/40 bg-[#FAF8F5] dark:border-cyan-500/40 dark:bg-indigo-950/20 text-[#1F1E1B] dark:text-slate-100'
                     : 'border-[#E5DFD5] dark:border-slate-800/80 bg-[#FFFFFF] dark:bg-slate-950/40 text-[#645F57] dark:text-slate-400'
@@ -174,7 +174,7 @@ export function SettingsView({
       </div>
 
       {/* Storage Health & Maintenance */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 vault-card-shadow">
         <div className="flex items-center gap-2">
           <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm">Storage & Maintenance</h3>
