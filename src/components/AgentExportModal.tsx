@@ -101,7 +101,7 @@ export function AgentExportModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl max-h-[92vh] bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/30 rounded-3xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-4xl max-h-[92vh] bg-[#FAF8F5] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-2xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
       >
         {/* Header */}
         <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-slate-800/80 bg-[#FAF8F5]/90 dark:bg-slate-900/60 flex items-center justify-between">
@@ -187,7 +187,7 @@ export function AgentExportModal({
                     className={`flex items-start gap-2.5 p-3 rounded-xl border cursor-pointer transition-all ${
                       isChecked
                         ? 'border-[#C15F3C] bg-[#FAF8F5] dark:border-cyan-400/60 dark:bg-indigo-950/30'
-                        : 'border-[#E5DFD5] dark:border-slate-800 bg-[#FFFFFF] dark:bg-[#070A13] hover:border-[#D5CFC5] dark:hover:border-slate-700'
+                        : 'border-[#E5DFD5] dark:border-slate-800 bg-[#FFFFFF] dark:bg-[#070A13] hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors'
                     }`}
                   >
                     <input
@@ -222,7 +222,7 @@ export function AgentExportModal({
               </span>
             </div>
 
-            <div className="relative rounded-2xl border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-[#070A13] p-4 max-h-60 overflow-y-auto font-mono text-xs text-[#1F1E1B] dark:text-indigo-200">
+            <div className="relative rounded-xl border border-[#E5DFD5] dark:border-indigo-500/20 bg-[#F8F5EF] dark:bg-[#111B30] p-4 max-h-60 overflow-auto font-mono text-xs text-[#1F1E1B] dark:text-indigo-200">
               <pre>{bundleJsonString}</pre>
             </div>
           </div>

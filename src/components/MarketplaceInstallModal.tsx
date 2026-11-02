@@ -82,7 +82,7 @@ export function MarketplaceInstallModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/30 rounded-3xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-2xl bg-[#FAF8F5] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-2xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
       >
         {/* Header */}
         <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-slate-800/80 bg-[#FAF8F5]/90 dark:bg-slate-900/60 flex items-start justify-between gap-4">
@@ -138,7 +138,7 @@ export function MarketplaceInstallModal({
         {/* Content & Configuration Form */}
         <form onSubmit={handleInstallSubmit} className="p-6 overflow-y-auto space-y-6 text-xs">
           {/* Overview */}
-          <div className="p-4 rounded-2xl bg-[#F8F5EF] dark:bg-slate-900/60 border border-[#E5DFD5] dark:border-slate-800/80 space-y-2">
+          <div className="p-4 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 overflow-auto space-y-2">
             <p className="text-[#3D3B39] dark:text-slate-300 leading-relaxed">{skill.description}</p>
             {skill.explanation && (
               <p className="text-[#C15F3C] dark:text-cyan-300/90 text-[11px] leading-relaxed pt-2 border-t border-[#E5DFD5] dark:border-slate-800/60">
@@ -174,7 +174,7 @@ export function MarketplaceInstallModal({
               {skill.inputSchema?.map((p) => (
                 <div
                   key={p.name}
-                  className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-slate-900/40 border border-[#E5DFD5] dark:border-slate-800/60 flex items-center justify-between text-xs"
+                  className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-transparent hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors border border-[#E5DFD5] dark:border-slate-800/60 flex items-center justify-between text-xs"
                 >
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-[#C15F3C] dark:text-cyan-300 font-semibold">{p.name}</span>

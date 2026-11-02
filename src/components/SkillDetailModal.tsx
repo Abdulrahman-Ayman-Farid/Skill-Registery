@@ -174,11 +174,11 @@ function SkillDetailModalInner({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/60 dark:bg-black/80 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/60 dark:bg-black/80 backdrop-blur-sm"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/30 rounded-3xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#FAF8F5] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-2xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
       >
         {/* Header */}
         <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-slate-800/80 bg-[#FAF8F5]/90 dark:bg-slate-900/60 flex items-start justify-between gap-4">
@@ -291,8 +291,8 @@ function SkillDetailModalInner({
             onClick={() => setActiveTab('agent')}
             className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'agent'
-                ? 'border-[#C15F3C] text-[#C15F3C] dark:border-cyan-400 dark:text-cyan-300'
-                : 'border-transparent text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
             }`}
           >
             <Code2 className="w-3.5 h-3.5" />
@@ -303,8 +303,8 @@ function SkillDetailModalInner({
             onClick={() => setActiveTab('schemas')}
             className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'schemas'
-                ? 'border-[#C15F3C] text-[#C15F3C] dark:border-cyan-400 dark:text-cyan-300'
-                : 'border-transparent text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -315,8 +315,8 @@ function SkillDetailModalInner({
             onClick={() => setActiveTab('playground')}
             className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'playground'
-                ? 'border-[#C15F3C] text-[#C15F3C] dark:border-cyan-400 dark:text-cyan-300'
-                : 'border-transparent text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
             }`}
           >
             <Play className="w-3.5 h-3.5" />
@@ -327,8 +327,8 @@ function SkillDetailModalInner({
             onClick={() => setActiveTab('overview')}
             className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'overview'
-                ? 'border-[#C15F3C] text-[#C15F3C] dark:border-cyan-400 dark:text-cyan-300'
-                : 'border-transparent text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
             }`}
           >
             <Terminal className="w-3.5 h-3.5" />
@@ -339,8 +339,8 @@ function SkillDetailModalInner({
             onClick={() => setActiveTab('history')}
             className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'history'
-                ? 'border-[#C15F3C] text-[#C15F3C] dark:border-cyan-400 dark:text-cyan-300'
-                : 'border-transparent text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
             }`}
           >
             <History className="w-3.5 h-3.5" />
@@ -356,8 +356,8 @@ function SkillDetailModalInner({
             onClick={() => setActiveTab('raw')}
             className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'raw'
-                ? 'border-[#C15F3C] text-[#C15F3C] dark:border-cyan-400 dark:text-cyan-300'
-                : 'border-transparent text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
             }`}
           >
             <FileCode className="w-3.5 h-3.5" />
@@ -496,7 +496,7 @@ function SkillDetailModalInner({
               </div>
             ) : quickTestResult ? (
               <div className="space-y-2">
-                <pre className="p-3.5 rounded-xl bg-[#FFFFFF] dark:bg-slate-950 border border-[#E5DFD5] dark:border-slate-800 font-mono text-xs text-emerald-700 dark:text-emerald-300 overflow-x-auto max-h-60 leading-relaxed shadow-inner">
+                <pre className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 font-mono text-xs text-emerald-700 dark:text-emerald-300 overflow-x-auto max-h-60 leading-relaxed shadow-inner">
                   {JSON.stringify(
                     quickTestView === 'response'
                       ? quickTestResult.response
@@ -621,7 +621,7 @@ function SkillDetailModalInner({
                   </button>
                 </div>
 
-                <div className="rounded-2xl border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-slate-900/60 p-4 text-xs font-mono text-[#3D3B39] dark:text-slate-300 whitespace-pre-wrap leading-relaxed">
+                <div className="rounded-2xl border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 text-xs font-mono text-[#3D3B39] dark:text-slate-300 whitespace-pre-wrap leading-relaxed">
                   {agentPromptInstruction}
                 </div>
               </div>
@@ -644,7 +644,7 @@ function SkillDetailModalInner({
                     {skill.inputSchema.map((param) => (
                       <div
                         key={param.name}
-                        className="rounded-xl border border-[#E5DFD5] dark:border-slate-800/80 bg-[#F8F5EF] dark:bg-slate-900/60 p-3.5 text-xs space-y-1.5"
+                        className="rounded-xl border border-[#E5DFD5] dark:border-slate-800/80 bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 text-xs space-y-1.5"
                       >
                         <div className="flex items-center justify-between gap-2 flex-wrap">
                           <div className="flex items-center gap-2">
@@ -707,7 +707,7 @@ function SkillDetailModalInner({
                 <h3 className="text-sm font-bold text-[#1F1E1B] dark:text-slate-200 uppercase tracking-wider text-[11px] mb-3">
                   Output Schema ({skill.outputSchema?.type || 'object'})
                 </h3>
-                <div className="rounded-xl border border-[#E5DFD5] dark:border-slate-800/80 bg-[#F8F5EF] dark:bg-slate-900/60 p-4 space-y-3 text-xs">
+                <div className="rounded-xl border border-[#E5DFD5] dark:border-slate-800/80 bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 space-y-3 text-xs">
                   <p className="text-[#645F57] dark:text-slate-300">{skill.outputSchema?.description || 'Structured object'}</p>
 
                   {skill.outputSchema?.exampleResponse && (
@@ -715,7 +715,7 @@ function SkillDetailModalInner({
                       <p className="text-[10px] font-semibold text-[#918B80] dark:text-slate-400 uppercase tracking-wider mb-1.5">
                         Sample Output Payload:
                       </p>
-                      <pre className="p-3 rounded-lg bg-[#FFFFFF] dark:bg-slate-950 border border-[#E5DFD5] dark:border-slate-800 text-[#C15F3C] dark:text-cyan-300 font-mono text-[11px] overflow-x-auto">
+                      <pre className="p-3 rounded-lg bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 text-[#C15F3C] dark:text-cyan-300 font-mono text-[11px] overflow-x-auto">
                         {typeof skill.outputSchema.exampleResponse === 'string'
                           ? skill.outputSchema.exampleResponse
                           : JSON.stringify(skill.outputSchema.exampleResponse, null, 2)}
@@ -819,7 +819,7 @@ function SkillDetailModalInner({
                     <p className="text-[10px] font-semibold text-[#645F57] dark:text-slate-400 uppercase tracking-wider mb-1">
                       Agent Tool Response Payload:
                     </p>
-                    <pre className="p-3 rounded-xl bg-[#FFFFFF] dark:bg-slate-950 border border-[#E5DFD5] dark:border-slate-800 font-mono text-xs text-emerald-600 dark:text-emerald-300 overflow-x-auto">
+                    <pre className="p-3 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 font-mono text-xs text-emerald-600 dark:text-emerald-300 overflow-x-auto">
                       {JSON.stringify(simResult.output, null, 2)}
                     </pre>
                   </div>
@@ -833,7 +833,7 @@ function SkillDetailModalInner({
             <div className="space-y-6 text-xs">
               <div>
                 <h3 className="font-bold text-[#1F1E1B] dark:text-slate-200 text-sm mb-2">Description & Agent Objective</h3>
-                <p className="text-[#3D3B39] dark:text-slate-300 leading-relaxed bg-[#F8F5EF] dark:bg-slate-900/60 p-3.5 rounded-xl border border-[#E5DFD5] dark:border-slate-800/80">
+                <p className="text-[#3D3B39] dark:text-slate-300 leading-relaxed bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4">
                   {skill.description}
                 </p>
               </div>
@@ -841,7 +841,7 @@ function SkillDetailModalInner({
               {skill.explanation && (
                 <div>
                   <h3 className="font-bold text-[#1F1E1B] dark:text-slate-200 text-sm mb-2">Agent Calling Strategy</h3>
-                  <p className="text-[#3D3B39] dark:text-slate-300 leading-relaxed bg-[#F8F5EF] dark:bg-slate-900/60 p-3.5 rounded-xl border border-[#E5DFD5] dark:border-slate-800/80">
+                  <p className="text-[#3D3B39] dark:text-slate-300 leading-relaxed bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4">
                     {skill.explanation}
                   </p>
                 </div>
@@ -851,14 +851,14 @@ function SkillDetailModalInner({
               <div>
                 <h3 className="font-bold text-[#1F1E1B] dark:text-slate-200 text-sm mb-2">Execution Configuration</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-slate-900/60 border border-[#E5DFD5] dark:border-slate-800/80">
+                  <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20">
                     <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Execution Timeout</p>
                     <p className="font-mono text-sm font-semibold text-[#1F1E1B] dark:text-slate-100 mt-1">
                       {skill.config?.timeoutMs || 10000} ms ({((skill.config?.timeoutMs || 10000) / 1000).toFixed(1)}s)
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-slate-900/60 border border-[#E5DFD5] dark:border-slate-800/80">
+                  <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20">
                     <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Retry Policy</p>
                     <p className="font-mono text-sm font-semibold text-[#1F1E1B] dark:text-slate-100 mt-1">
                       Max {skill.config?.retryPolicy?.maxRetries ?? 2} retries (Backoff: {skill.config?.retryPolicy?.backoffMs ?? 1000}ms)
@@ -866,7 +866,7 @@ function SkillDetailModalInner({
                   </div>
 
                   {skill.config?.endpointUrl && (
-                    <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-slate-900/60 border border-[#E5DFD5] dark:border-slate-800/80 sm:col-span-2">
+                    <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 sm:col-span-2">
                       <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Target Endpoint URL</p>
                       <p className="font-mono text-xs text-[#C15F3C] dark:text-cyan-300 mt-1 break-all">
                         {skill.config.endpointUrl}
@@ -875,7 +875,7 @@ function SkillDetailModalInner({
                   )}
 
                   {skill.config?.apiKeyName && (
-                    <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-slate-900/60 border border-[#E5DFD5] dark:border-slate-800/80 sm:col-span-2 flex items-center justify-between">
+                    <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 sm:col-span-2 flex items-center justify-between">
                       <div>
                         <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Required Environment Secret / Key</p>
                         <p className="font-mono text-xs font-semibold text-amber-600 dark:text-amber-300 mt-1">
@@ -977,7 +977,7 @@ function SkillDetailModalInner({
                 </div>
               </div>
 
-              <pre className="p-4 rounded-2xl bg-[#F8F5EF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 text-[#1F1E1B] dark:text-cyan-200 font-mono text-xs overflow-x-auto leading-relaxed">
+              <pre className="p-4 rounded-2xl bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 text-[#1F1E1B] dark:text-cyan-200 font-mono text-xs overflow-x-auto leading-relaxed">
                 {serializeSkill(skill, rawFormat)}
               </pre>
             </div>
