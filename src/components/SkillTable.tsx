@@ -49,7 +49,7 @@ export function SkillTable({
   };
 
   return (
-    <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] backdrop-blur-md overflow-hidden claude-card-shadow dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] transition-all">
+    <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] backdrop-blur-md overflow-hidden vault-card-shadow">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
@@ -80,7 +80,7 @@ export function SkillTable({
                 <tr
                   key={skill.id}
                   onClick={() => onViewDetails(skill)}
-                  className={`hover:bg-[#F8F5EF] dark:hover:bg-[#111B30]/80 transition-colors cursor-pointer ${
+                  className={`hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors cursor-pointer ${
                     isSelected ? 'bg-[#FAF8F5] dark:bg-indigo-950/25' : ''
                   }`}
                 >

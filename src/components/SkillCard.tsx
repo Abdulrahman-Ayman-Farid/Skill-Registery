@@ -62,7 +62,7 @@ export function SkillCard({
       className={`group relative rounded-2xl border p-5 transition-all duration-150 cursor-pointer flex flex-col justify-between h-full select-none ${
         isSelected
           ? 'border-[#C15F3C] ring-1 ring-[#C15F3C] bg-[#FAF8F5] dark:border-cyan-400 dark:ring-1 dark:ring-cyan-400 dark:bg-slate-900/90'
-          : 'bg-white dark:bg-[#0D1424] border-[#E5DFD5] dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 shadow-xs'
+          : 'bg-white dark:bg-[#0D1424] border-[#E5DFD5] dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 shadow-xs vault-card-shadow'
       }`}
     >
       <div className="flex flex-col">
