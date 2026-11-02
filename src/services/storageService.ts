@@ -7,9 +7,8 @@ import {
   revertSkillToSnapshot,
 } from '../utils/versionHistory.ts';
 
-const STORAGE_KEY_PREFIX = 'ai_agent_skill_registry_';
-const USERS_STORAGE_KEY = `${STORAGE_KEY_PREFIX}users`;
-const CURRENT_USER_KEY = `${STORAGE_KEY_PREFIX}current_user_id`;
+const API_BASE = import.meta.env.VITE_API_URL || '';
+const CURRENT_USER_KEY = 'ai_agent_skill_registry_current_user_id';
 
 // Default users with the user's email from environment metadata
 export const DEFAULT_USERS: User[] = [
@@ -31,247 +30,220 @@ export const DEFAULT_USERS: User[] = [
 
 /**
  * Storage Service for managing per-user persistent registries.
+ * All persistence is delegated to the Express backend API.
  */
 class StorageService {
-  private memoryCache: Map<string, Skill[]> = new Map();
+  private async request<T>(path: string, options?: RequestInit): Promise<T> {
+    const response = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      headers: {
+        ...(options?.body ? { 'Content-Type': 'application/json' } : {}),
+        ...(options?.headers || {}),
+      },
+    });
 
-  constructor() {
-    this.ensureInitialized();
-  }
-
-  private ensureInitialized(): void {
-    if (typeof window === 'undefined') return;
-
-    // Initialize users
-    const storedUsers = localStorage.getItem(USERS_STORAGE_KEY);
-    if (!storedUsers) {
-      localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(DEFAULT_USERS));
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status} ${response.statusText}`);
     }
 
-    // Initialize current user
-    const currentUserId = localStorage.getItem(CURRENT_USER_KEY);
-    if (!currentUserId) {
-      localStorage.setItem(CURRENT_USER_KEY, DEFAULT_USERS[0].id);
-    }
-
-    // Seed default user skills if not present
-    const defaultUserKey = this.getUserSkillsKey(DEFAULT_USERS[0].id);
-    if (!localStorage.getItem(defaultUserKey)) {
-      const seeded = STARTER_SKILLS.map((skill) => ({
-        ...skill,
-        userId: DEFAULT_USERS[0].id,
-      }));
-      localStorage.setItem(defaultUserKey, JSON.stringify(seeded));
-    }
+    return response.json() as Promise<T>;
   }
 
-  private getUserSkillsKey(userId: string): string {
-    return `${STORAGE_KEY_PREFIX}skills_${userId}`;
+  private getCurrentUserId(): string {
+    if (typeof window === 'undefined') return DEFAULT_USERS[0].id;
+    return localStorage.getItem(CURRENT_USER_KEY) || DEFAULT_USERS[0].id;
   }
 
-  public getUsers(): User[] {
-    if (typeof window === 'undefined') return DEFAULT_USERS;
+  public async getUsers(): Promise<User[]> {
     try {
-      const data = localStorage.getItem(USERS_STORAGE_KEY);
-      return data ? JSON.parse(data) : DEFAULT_USERS;
+      return await this.request<User[]>('/api/users');
     } catch {
       return DEFAULT_USERS;
     }
   }
 
-  public getCurrentUser(): User {
-    if (typeof window === 'undefined') return DEFAULT_USERS[0];
-    const users = this.getUsers();
-    const currentId = localStorage.getItem(CURRENT_USER_KEY);
-    return users.find((u) => u.id === currentId) || users[0] || DEFAULT_USERS[0];
-  }
-
-  public setCurrentUser(userId: string): User {
-    localStorage.setItem(CURRENT_USER_KEY, userId);
-    const user = this.getCurrentUser();
-    // Ensure the new user has a skills entry (seed with starters on first login)
-    const key = this.getUserSkillsKey(userId);
-    if (!localStorage.getItem(key)) {
-      const seeded = STARTER_SKILLS.map((skill) => ({
-        ...skill,
-        id: `${skill.id}-${userId.slice(0, 4)}`,
-        userId: userId,
-      }));
-      localStorage.setItem(key, JSON.stringify(seeded));
+  public async getCurrentUser(): Promise<User> {
+    try {
+      const currentId = this.getCurrentUserId();
+      const users = await this.getUsers();
+      return users.find((u) => u.id === currentId) || users[0] || DEFAULT_USERS[0];
+    } catch {
+      return DEFAULT_USERS[0];
     }
-    return user;
   }
 
-  public createUser(name: string, email: string, role: 'Developer' | 'Admin' | 'AI Engineer' = 'Developer'): User {
-    const users = this.getUsers();
-    const newUser: User = {
-      id: `usr_${Date.now()}`,
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      role,
-    };
-    users.push(newUser);
-    localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
-    this.setCurrentUser(newUser.id);
+  public async setCurrentUser(userId: string): Promise<User> {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(CURRENT_USER_KEY, userId);
+    }
+    try {
+      const users = await this.getUsers();
+      return users.find((u) => u.id === userId) || users[0] || DEFAULT_USERS[0];
+    } catch {
+      return DEFAULT_USERS[0];
+    }
+  }
+
+  public async createUser(
+    name: string,
+    email: string,
+    role: 'Developer' | 'Admin' | 'AI Engineer' = 'Developer'
+  ): Promise<User> {
+    const newUser = await this.request<User>('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase(), role }),
+    });
+    await this.setCurrentUser(newUser.id);
     return newUser;
   }
 
-  public getSkills(userId?: string): Skill[] {
-    if (typeof window === 'undefined') return STARTER_SKILLS;
-    const targetUserId = userId || this.getCurrentUser().id;
-    const key = this.getUserSkillsKey(targetUserId);
+  public async getSkills(userId?: string): Promise<Skill[]> {
+    const targetUserId = userId || this.getCurrentUserId();
+    const skills = await this.request<Skill[]>(`/api/skills?userId=${encodeURIComponent(targetUserId)}`);
 
-    try {
-      const raw = localStorage.getItem(key);
-      if (!raw) {
-        // Seed initial skills for this user
-        const seeded = STARTER_SKILLS.map((skill) => ({
-          ...skill,
-          userId: targetUserId,
-        }));
-        localStorage.setItem(key, JSON.stringify(seeded));
-        return seeded;
-      }
-      const parsed: Skill[] = JSON.parse(raw);
-      let wasEnriched = false;
-      const enriched = parsed.map((skill) => {
-        let currentSkill = skill;
-        if (!currentSkill.versionHistory || currentSkill.versionHistory.length === 0) {
-          const starterMatch = STARTER_SKILLS.find(
-            (s) => s.id === currentSkill.id || s.name.toLowerCase() === currentSkill.name.toLowerCase()
-          );
-          if (starterMatch?.versionHistory && starterMatch.versionHistory.length > 0) {
-            wasEnriched = true;
-            currentSkill = {
-              ...currentSkill,
-              versionHistory: starterMatch.versionHistory,
-            };
-          } else {
-            wasEnriched = true;
-            currentSkill = {
-              ...currentSkill,
-              versionHistory: [
-                createVersionSnapshot(currentSkill, 'Initial skill definition snapshot', currentSkill.author),
-              ],
-            };
-          }
-        }
-
-        if (currentSkill.dependencies === undefined) {
-          const starterMatch = STARTER_SKILLS.find(
-            (s) => s.id === currentSkill.id || s.name.toLowerCase() === currentSkill.name.toLowerCase()
-          );
-          wasEnriched = true;
+    // Enrich version history / dependencies (business logic, not persistence)
+    const enriched = skills.map((skill) => {
+      let currentSkill = skill;
+      if (!currentSkill.versionHistory || currentSkill.versionHistory.length === 0) {
+        const starterMatch = STARTER_SKILLS.find(
+          (s) => s.id === currentSkill.id || s.name.toLowerCase() === currentSkill.name.toLowerCase()
+        );
+        if (starterMatch?.versionHistory && starterMatch.versionHistory.length > 0) {
           currentSkill = {
             ...currentSkill,
-            dependencies: starterMatch?.dependencies || [],
+            versionHistory: starterMatch.versionHistory,
+          };
+        } else {
+          currentSkill = {
+            ...currentSkill,
+            versionHistory: [
+              createVersionSnapshot(currentSkill, 'Initial skill definition snapshot', currentSkill.author),
+            ],
           };
         }
-
-        return currentSkill;
-      });
-
-      if (wasEnriched) {
-        localStorage.setItem(key, JSON.stringify(enriched));
       }
-      return enriched;
-    } catch (e) {
-      console.error('Failed to parse skills from localStorage', e);
-      return STARTER_SKILLS;
-    }
+
+      if (currentSkill.dependencies === undefined) {
+        const starterMatch = STARTER_SKILLS.find(
+          (s) => s.id === currentSkill.id || s.name.toLowerCase() === currentSkill.name.toLowerCase()
+        );
+        currentSkill = {
+          ...currentSkill,
+          dependencies: starterMatch?.dependencies || [],
+        };
+      }
+
+      return currentSkill;
+    });
+
+    return enriched;
   }
 
-  public getSkillById(id: string, userId?: string): Skill | undefined {
-    const skills = this.getSkills(userId);
+  public async getSkillById(id: string, userId?: string): Promise<Skill | undefined> {
+    const skills = await this.getSkills(userId);
     return skills.find((s) => s.id === id);
   }
 
-  public saveSkill(skill: Skill): Skill {
-    const currentId = this.getCurrentUser().id;
+  public async saveSkill(skill: Skill): Promise<Skill> {
+    const currentId = this.getCurrentUserId();
     const userId = (!skill.userId || skill.userId === 'current') ? currentId : skill.userId;
-    const skills = this.getSkills(userId);
     const now = new Date().toISOString();
-    const currentUser = this.getCurrentUser();
+    const currentUser = await this.getCurrentUser();
 
-    const existingIndex = skills.findIndex((s) => s.id === skill.id);
     let updatedSkill: Skill;
 
-    if (existingIndex >= 0) {
-      const existingSkill = skills[existingIndex];
-      const changes = detectSkillChanges(existingSkill, skill);
-      const existingHistory = existingSkill.versionHistory || [];
+    if (skill.id) {
+      // Fetch the existing skill for change detection
+      const skills = await this.getSkills(userId);
+      const existingSkill = skills.find((s) => s.id === skill.id);
 
-      // If there are detectable changes, save a snapshot of the prior state in timeline
-      if (changes.length > 0) {
-        const priorSnapshot = createVersionSnapshot(
-          existingSkill,
-          changes.join('; '),
-          currentUser.name
-        );
-        updatedSkill = {
-          ...skill,
-          userId,
-          updatedAt: now,
-          versionHistory: [priorSnapshot, ...existingHistory],
-        };
+      if (existingSkill) {
+        const changes = detectSkillChanges(existingSkill, skill);
+        const existingHistory = existingSkill.versionHistory || [];
+
+        // If there are detectable changes, save a snapshot of the prior state in timeline
+        if (changes.length > 0) {
+          const priorSnapshot = createVersionSnapshot(
+            existingSkill,
+            changes.join('; '),
+            currentUser.name
+          );
+          updatedSkill = {
+            ...skill,
+            userId,
+            updatedAt: now,
+            versionHistory: [priorSnapshot, ...existingHistory],
+          };
+        } else {
+          updatedSkill = {
+            ...skill,
+            userId,
+            updatedAt: now,
+            versionHistory: skill.versionHistory || existingHistory,
+          };
+        }
       } else {
         updatedSkill = {
           ...skill,
           userId,
           updatedAt: now,
-          versionHistory: skill.versionHistory || existingHistory,
+          versionHistory: skill.versionHistory || [],
         };
       }
-      skills[existingIndex] = updatedSkill;
-    } else {
-      const initialSnapshot = createVersionSnapshot(
-        skill,
-        'Initial skill definition created',
-        currentUser.name
-      );
-      updatedSkill = {
-        ...skill,
-        id: skill.id || `skill_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-        userId,
-        createdAt: skill.createdAt || now,
-        updatedAt: now,
-        versionHistory: skill.versionHistory && skill.versionHistory.length > 0 ? skill.versionHistory : [initialSnapshot],
-      };
-      skills.unshift(updatedSkill);
+
+      const saved = await this.request<Skill>(`/api/skills/${encodeURIComponent(skill.id)}`, {
+        method: 'PUT',
+        body: JSON.stringify(updatedSkill),
+      });
+      return saved && Object.keys(saved).length > 0 ? saved : updatedSkill;
     }
 
-    const key = this.getUserSkillsKey(userId);
-    localStorage.setItem(key, JSON.stringify(skills));
-    return updatedSkill;
+    const initialSnapshot = createVersionSnapshot(
+      skill,
+      'Initial skill definition created',
+      currentUser.name
+    );
+    updatedSkill = {
+      ...skill,
+      id: skill.id || `skill_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      userId,
+      createdAt: skill.createdAt || now,
+      updatedAt: now,
+      versionHistory: skill.versionHistory && skill.versionHistory.length > 0 ? skill.versionHistory : [initialSnapshot],
+    };
+
+    const saved = await this.request<Skill>('/api/skills', {
+      method: 'POST',
+      body: JSON.stringify(updatedSkill),
+    });
+    return saved && Object.keys(saved).length > 0 ? saved : updatedSkill;
   }
 
-  public revertSkillVersion(skillId: string, versionId: string, userId?: string): Skill {
-    const targetUserId = userId || this.getCurrentUser().id;
-    const skill = this.getSkillById(skillId, targetUserId);
+  public async revertSkillVersion(skillId: string, versionId: string, userId?: string): Promise<Skill> {
+    const skill = await this.getSkillById(skillId, userId);
     if (!skill) throw new Error('Skill not found');
 
     const targetSnapshot = skill.versionHistory?.find((v) => v.versionId === versionId);
     if (!targetSnapshot) throw new Error('Version snapshot not found');
 
-    const reverted = revertSkillToSnapshot(skill, targetSnapshot, this.getCurrentUser().name);
+    const currentUser = await this.getCurrentUser();
+    const reverted = revertSkillToSnapshot(skill, targetSnapshot, currentUser.name);
     return this.saveSkill(reverted);
   }
 
-  public deleteSkill(id: string, userId?: string): void {
-    const targetUserId = userId || this.getCurrentUser().id;
-    const skills = this.getSkills(targetUserId);
-    const filtered = skills.filter((s) => s.id !== id);
-    const key = this.getUserSkillsKey(targetUserId);
-    localStorage.setItem(key, JSON.stringify(filtered));
+  public async deleteSkill(id: string, _userId?: string): Promise<void> {
+    await this.request<void>(`/api/skills/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+    });
   }
 
-  public duplicateSkill(id: string, userId?: string): Skill {
-    const targetUserId = userId || this.getCurrentUser().id;
-    const original = this.getSkillById(id, targetUserId);
+  public async duplicateSkill(id: string, userId?: string): Promise<Skill> {
+    const original = await this.getSkillById(id, userId);
     if (!original) {
       throw new Error(`Skill with id ${id} not found.`);
     }
 
+    const targetUserId = userId || this.getCurrentUserId();
     const duplicate: Skill = {
       ...original,
       id: `skill_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
@@ -283,12 +255,11 @@ class StorageService {
       updatedAt: new Date().toISOString(),
     };
 
-    return this.saveSkill(duplicate);
+    return await this.saveSkill(duplicate);
   }
 
-  public toggleArchiveSkill(id: string, userId?: string): Skill {
-    const targetUserId = userId || this.getCurrentUser().id;
-    const skill = this.getSkillById(id, targetUserId);
+  public async toggleArchiveSkill(id: string, userId?: string): Promise<Skill> {
+    const skill = await this.getSkillById(id, userId);
     if (!skill) throw new Error('Skill not found');
 
     const nextStatus: SkillStatus = skill.status === 'deprecated' ? 'active' : 'deprecated';
@@ -296,12 +267,12 @@ class StorageService {
     return this.saveSkill(updated);
   }
 
-  public installMarketplaceSkill(
+  public async installMarketplaceSkill(
     marketplaceSkill: Skill,
     customConfig?: Partial<SkillConfig>,
     userId?: string
-  ): Skill {
-    const targetUserId = userId || this.getCurrentUser().id;
+  ): Promise<Skill> {
+    const targetUserId = userId || this.getCurrentUserId();
     const newSkill: Skill = {
       ...marketplaceSkill,
       id: `installed_${marketplaceSkill.id}_${Date.now().toString(36)}`,
@@ -316,14 +287,14 @@ class StorageService {
       updatedAt: new Date().toISOString(),
     };
 
-    return this.saveSkill(newSkill);
+    return await this.saveSkill(newSkill);
   }
 
-  public importSkills(
+  public async importSkills(
     incomingSkills: any[],
     userId?: string
-  ): { importedCount: number; errors: string[] } {
-    const targetUserId = userId || this.getCurrentUser().id;
+  ): Promise<{ importedCount: number; errors: string[] }> {
+    const targetUserId = userId || this.getCurrentUserId();
     const errors: string[] = [];
     let count = 0;
 
@@ -342,21 +313,22 @@ class StorageService {
         createdAt: item.createdAt || new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
-      this.saveSkill(prepared);
+      await this.saveSkill(prepared);
       count++;
     }
 
     return { importedCount: count, errors };
   }
 
-  public resetUserSkillsToDefault(userId?: string): void {
-    const targetUserId = userId || this.getCurrentUser().id;
+  public async resetUserSkillsToDefault(userId?: string): Promise<void> {
+    const targetUserId = userId || this.getCurrentUserId();
     const seeded = STARTER_SKILLS.map((skill) => ({
       ...skill,
       userId: targetUserId,
     }));
-    const key = this.getUserSkillsKey(targetUserId);
-    localStorage.setItem(key, JSON.stringify(seeded));
+    for (const skill of seeded) {
+      await this.saveSkill(skill);
+    }
   }
 }
 

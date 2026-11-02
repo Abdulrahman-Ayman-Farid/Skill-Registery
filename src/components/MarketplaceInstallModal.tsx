@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   X,
   Download,
   Star,
   ExternalLink,
-  ShieldCheck,
-  Clock,
   Layers,
   Wand2,
   Key,
 } from 'lucide-react';
 import { Skill, SkillConfig } from '../types/skill.ts';
-import {
-  getCategoryBadgeClass,
-  getExecutionTypeBadgeClass,
-} from '../utils/uiHelpers.ts';
 
 interface MarketplaceInstallModalProps {
   skill: Skill | null;
@@ -78,17 +72,17 @@ export function MarketplaceInstallModal({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/60 dark:bg-black/80 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/30 rounded-3xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-2xl max-h-[90vh] bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 flex flex-col overflow-hidden text-white"
       >
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-slate-800/80 bg-[#FAF8F5]/90 dark:bg-slate-900/60 flex items-start justify-between gap-4">
+        <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-[#2a2a2a] bg-[#FAF8F5]/90 dark:bg-[#111111]/60 flex items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-1.5 text-xs text-[#645F57] dark:text-slate-400 mb-1">
-              <span className="font-semibold uppercase tracking-wider text-[#1F1E1B] dark:text-cyan-300">
+              <span className="font-semibold uppercase tracking-wider text-[#1F1E1B] dark:text-amber-300">
                 {skill.category}
               </span>
               <span className="text-[#918B80] dark:text-slate-600">•</span>
@@ -113,7 +107,7 @@ export function MarketplaceInstallModal({
                   href={skill.docUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#918B80] hover:text-[#C15F3C] dark:text-slate-500 dark:hover:text-cyan-400 transition-colors"
+                  className="text-[#918B80] hover:text-[#C15F3C] dark:text-slate-500 dark:hover:text-amber-400 transition-colors"
                   title="Official Documentation"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -121,14 +115,14 @@ export function MarketplaceInstallModal({
               )}
             </h2>
             <p className="text-xs text-[#645F57] dark:text-slate-400 mt-0.5">
-              Source: <span className="text-[#C15F3C] dark:text-cyan-400 font-semibold">{skill.source}</span> • Author: {skill.author}
+              Source: <span className="text-[#C15F3C] dark:text-amber-400 font-semibold">{skill.source}</span> • Author: {skill.author}
               {skill.license && <span className="text-[#918B80] dark:text-slate-500"> • License: {skill.license}</span>}
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] text-[#645F57] hover:text-[#1F1E1B] dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
+            className="p-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] text-[#645F57] hover:text-[#1F1E1B] dark:bg-[#1f1f1f] dark:hover:bg-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -138,10 +132,10 @@ export function MarketplaceInstallModal({
         {/* Content & Configuration Form */}
         <form onSubmit={handleInstallSubmit} className="p-6 overflow-y-auto space-y-6 text-xs">
           {/* Overview */}
-          <div className="p-4 rounded-2xl bg-[#F8F5EF] dark:bg-slate-900/60 border border-[#E5DFD5] dark:border-slate-800/80 space-y-2">
+          <div className="p-4 rounded-xl bg-[#F8F5EF] dark:bg-[#1f1f1f] border border-[#E5DFD5] dark:border-[#3a3a3a] overflow-auto space-y-2">
             <p className="text-[#3D3B39] dark:text-slate-300 leading-relaxed">{skill.description}</p>
             {skill.explanation && (
-              <p className="text-[#C15F3C] dark:text-cyan-300/90 text-[11px] leading-relaxed pt-2 border-t border-[#E5DFD5] dark:border-slate-800/60">
+              <p className="text-[#C15F3C] dark:text-amber-300/90 text-[11px] leading-relaxed pt-2 border-t border-[#E5DFD5] dark:border-[#2a2a2a]">
                 <span className="font-semibold text-[#1F1E1B] dark:text-slate-200">Agent Calling Guidance: </span>
                 {skill.explanation}
               </p>
@@ -167,17 +161,17 @@ export function MarketplaceInstallModal({
           {/* Parameters Preview */}
           <div>
             <h4 className="font-bold text-[#1F1E1B] dark:text-slate-300 uppercase tracking-wider text-[10px] mb-2 flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+              <Layers className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
               <span>Input Parameters ({skill.inputSchema?.length || 0})</span>
             </h4>
             <div className="space-y-1.5">
               {skill.inputSchema?.map((p) => (
                 <div
                   key={p.name}
-                  className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-slate-900/40 border border-[#E5DFD5] dark:border-slate-800/60 flex items-center justify-between text-xs"
+                  className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-transparent hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] transition-colors border border-[#E5DFD5] dark:border-[#2a2a2a] flex items-center justify-between text-xs"
                 >
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[#C15F3C] dark:text-cyan-300 font-semibold">{p.name}</span>
+                    <span className="font-mono text-[#C15F3C] dark:text-amber-300 font-semibold">{p.name}</span>
                     <span className="font-mono text-[10px] text-[#645F57] dark:text-slate-400">({p.type})</span>
                     {p.required && (
                       <span className="text-[9px] px-1.5 py-0.2 rounded bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-500/15 dark:text-rose-300">
@@ -192,9 +186,9 @@ export function MarketplaceInstallModal({
           </div>
 
           {/* Custom Configuration Before Install */}
-          <div className="border-t border-[#EFEAE2] dark:border-slate-800/80 pt-5 space-y-4">
+          <div className="border-t border-[#EFEAE2] dark:border-[#2a2a2a] pt-5 space-y-4">
             <h4 className="font-bold text-[#1F1E1B] dark:text-slate-300 uppercase tracking-wider text-[10px] flex items-center gap-1.5">
-              <Wand2 className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+              <Wand2 className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
               <span>Customize Configuration for Your Registry</span>
             </h4>
 
@@ -206,7 +200,7 @@ export function MarketplaceInstallModal({
                   placeholder="https://..."
                   value={endpointUrl}
                   onChange={(e) => setEndpointUrl(e.target.value)}
-                  className="w-full bg-[#F8F5EF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-cyan-400"
+                  className="w-full bg-[#F8F5EF] dark:bg-[#1f1f1f] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-amber-400"
                 />
               </div>
 
@@ -217,7 +211,7 @@ export function MarketplaceInstallModal({
                   placeholder="MY_API_KEY"
                   value={apiKeyName}
                   onChange={(e) => setApiKeyName(e.target.value)}
-                  className="w-full bg-[#F8F5EF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-cyan-400"
+                  className="w-full bg-[#F8F5EF] dark:bg-[#1f1f1f] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-amber-400"
                 />
               </div>
 
@@ -227,7 +221,7 @@ export function MarketplaceInstallModal({
                   type="number"
                   value={timeoutMs}
                   onChange={(e) => setTimeoutMs(Number(e.target.value))}
-                  className="w-full bg-[#F8F5EF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-cyan-400"
+                  className="w-full bg-[#F8F5EF] dark:bg-[#1f1f1f] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-amber-400"
                 />
               </div>
 
@@ -237,14 +231,14 @@ export function MarketplaceInstallModal({
                   type="number"
                   value={maxRetries}
                   onChange={(e) => setMaxRetries(Number(e.target.value))}
-                  className="w-full bg-[#F8F5EF] dark:bg-slate-900 border border-[#E5DFD5] dark:border-slate-800 rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-cyan-400"
+                  className="w-full bg-[#F8F5EF] dark:bg-[#1f1f1f] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-[#1F1E1B] dark:text-slate-100 font-mono outline-none focus:border-[#C15F3C] dark:focus:border-amber-400"
                 />
               </div>
             </div>
           </div>
 
           {/* Footer Actions */}
-          <div className="pt-4 border-t border-[#EFEAE2] dark:border-slate-800/80 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-[#EFEAE2] dark:border-[#2a2a2a] flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
@@ -254,7 +248,7 @@ export function MarketplaceInstallModal({
             </button>
             <button
               type="submit"
-              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-indigo-600 dark:via-indigo-500 dark:to-cyan-500 active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:via-amber-500 dark:to-orange-500 active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Install to My Registry</span>

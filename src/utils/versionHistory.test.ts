@@ -5,7 +5,7 @@ import {
   createVersionSnapshot,
   revertSkillToSnapshot,
 } from './versionHistory.ts';
-import type { Skill, SkillVersionSnapshot } from '../types/skill.ts';
+import type { Skill } from '../types/skill.ts';
 
 const baseSkill: Skill = {
   id: 'skill-test-1',

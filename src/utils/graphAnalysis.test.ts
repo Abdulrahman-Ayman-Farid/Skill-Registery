@@ -4,7 +4,6 @@ import {
   detectCycles,
   findSharedDefinitions,
   computeTopologicalSort,
-  analyzeSkillGraph,
   buildD3GraphData,
   checkWouldCreateCycle,
 } from './graphAnalysis.ts';

@@ -13,6 +13,12 @@ export default defineConfig(({ mode }) => {
     server: {
       port: Number(env.PORT) || 3000,
       host: env.HOST || '0.0.0.0',
+        proxy: {
+          '/api': {
+            target: 'http://localhost:3001',
+            changeOrigin: true,
+          },
+        },
     },
   };
 });

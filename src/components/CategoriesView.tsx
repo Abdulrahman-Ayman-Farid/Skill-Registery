@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Search,
   Database,
@@ -25,42 +24,42 @@ const CATEGORY_META: Record<
   Search: {
     icon: Search,
     description: 'Web search engines, web scraping, URL fetching, and real-time knowledge discovery.',
-    colorClass: 'bg-blue-50 text-blue-700 border-blue-200 dark:from-blue-600/30 dark:to-cyan-600/20 dark:text-cyan-300 dark:border-cyan-500/40 dark:shadow-[0_0_12px_rgba(6,182,212,0.25)]',
+    colorClass: 'bg-blue-100/70 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300',
   },
   Data: {
     icon: Database,
     description: 'SQL queries, tabular CSV/Excel analysis, data transformations, and metrics calculation.',
-    colorClass: 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:from-emerald-600/30 dark:to-teal-600/20 dark:text-emerald-300 dark:border-emerald-500/40 dark:shadow-[0_0_12px_rgba(16,185,129,0.25)]',
+    colorClass: 'bg-emerald-100/70 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300',
   },
   Files: {
     icon: FileText,
     description: 'PDF parsing, document OCR, filesystem operations, and structured file extractions.',
-    colorClass: 'bg-amber-50 text-amber-900 border-amber-200 dark:from-amber-600/30 dark:to-yellow-600/20 dark:text-amber-300 dark:border-amber-500/40',
+    colorClass: 'bg-amber-100/70 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300',
   },
   Communication: {
     icon: MessageSquare,
     description: 'Email drafting, Slack/Discord messaging, SMS notifications, and user alerts.',
-    colorClass: 'bg-rose-50 text-rose-800 border-rose-200 dark:from-rose-600/30 dark:to-pink-600/20 dark:text-rose-300 dark:border-rose-500/40',
+    colorClass: 'bg-rose-100/70 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300',
   },
   'Developer Tools': {
     icon: Wrench,
     description: 'Code execution sandboxes, GitHub integration, shell utilities, and HTTP API callers.',
-    colorClass: 'bg-[#C15F3C]/10 text-[#C15F3C] border-[#C15F3C]/25 dark:from-cyan-600/30 dark:to-indigo-600/20 dark:text-cyan-300 dark:border-cyan-400/40 dark:shadow-[0_0_12px_rgba(6,182,212,0.25)]',
+    colorClass: 'bg-[#C15F3C]/15 text-[#C15F3C] dark:bg-amber-500/15 dark:text-amber-300',
   },
   Vision: {
     icon: Eye,
     description: 'Multimodal image inspection, visual question answering, OCR, and diagram comprehension.',
-    colorClass: 'bg-purple-50 text-purple-800 border-purple-200 dark:from-purple-600/30 dark:to-indigo-600/20 dark:text-purple-300 dark:border-purple-500/40',
+    colorClass: 'bg-purple-100/70 text-purple-700 dark:bg-purple-500/15 dark:text-purple-300',
   },
   RAG: {
     icon: Brain,
     description: 'Vector embeddings lookup, semantic similarity search, chunk retrieval, and graph RAG.',
-    colorClass: 'bg-indigo-50 text-indigo-900 border-indigo-200 dark:from-indigo-600/30 dark:to-violet-600/20 dark:text-indigo-300 dark:border-indigo-500/40 dark:shadow-[0_0_12px_rgba(99,102,241,0.25)]',
+    colorClass: 'bg-indigo-100/70 text-indigo-700 dark:bg-amber-500/15 dark:text-amber-300',
   },
   Productivity: {
     icon: CheckCircle2,
     description: 'Calendar event scheduling, task tracking, CRM synchronization, and meeting summaries.',
-    colorClass: 'bg-teal-50 text-teal-800 border-teal-200 dark:from-teal-600/30 dark:to-emerald-600/20 dark:text-teal-300 dark:border-teal-500/40',
+    colorClass: 'bg-teal-100/70 text-teal-700 dark:bg-teal-500/15 dark:text-teal-300',
   },
 };
 
@@ -88,11 +87,11 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
               key={category}
               type="button"
               onClick={() => onSelectCategoryFilter(category)}
-              className="text-left rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] hover:bg-[#FAF8F5] dark:hover:bg-[#111B30] p-5 transition-all outline-none focus-visible:ring-2 focus-visible:ring-[#C15F3C] dark:focus-visible:ring-cyan-500 flex flex-col justify-between group hover:border-[#C15F3C]/40 dark:hover:border-cyan-400/50 claude-card-shadow dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:-translate-y-0.5"
+              className="text-left rounded-2xl border border-[#E5DFD5] dark:border-white/10 bg-[#FFFFFF] dark:bg-white/5 p-5 transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-amber-500 flex flex-col justify-between group hover:border-[#C15F3C] dark:hover:border-amber-500/30 hover:shadow-[#C15F3C]/10 dark:hover:shadow-amber-500/20"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center border transition-all ${meta.colorClass}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${meta.colorClass}`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   <span className="font-mono text-xs text-[#918B80] dark:text-slate-400 font-medium">
@@ -100,19 +99,19 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
                   </span>
                 </div>
 
-                <h3 className="font-bold text-[#1F1E1B] group-hover:text-[#C15F3C] dark:text-slate-100 dark:group-hover:text-cyan-300 text-sm transition-colors">
+                <h3 className="font-bold text-[#1F1E1B] dark:text-white group-hover:text-[#C15F3C] dark:group-hover:text-amber-300 text-sm transition-colors">
                   {category}
                 </h3>
-                <p className="text-xs text-[#645F57] dark:text-slate-400 mt-1 leading-relaxed line-clamp-2">
+                <p className="text-xs text-gray-400 mt-1 leading-relaxed line-clamp-2">
                   {meta.description}
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#EFEAE2] dark:border-indigo-500/20 flex items-center justify-between text-xs text-[#645F57] dark:text-slate-400 w-full">
+              <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400 w-full">
                 <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
                   {activeCount} active
                 </span>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C15F3C] dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform">
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C15F3C] dark:text-amber-400 group-hover:translate-x-0.5 transition-transform">
                   <span>Browse skills</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>

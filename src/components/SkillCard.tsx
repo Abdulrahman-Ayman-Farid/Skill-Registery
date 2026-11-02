@@ -59,11 +59,7 @@ export function SkillCard({
           onViewDetails(skill);
         }
       }}
-      className={`group relative rounded-2xl border p-5 transition-all duration-150 cursor-pointer flex flex-col justify-between h-full select-none ${
-        isSelected
-          ? 'border-[#C15F3C] ring-1 ring-[#C15F3C] bg-[#FAF8F5] dark:border-cyan-400 dark:ring-1 dark:ring-cyan-400 dark:bg-slate-900/90'
-          : 'bg-white dark:bg-[#0D1424] border-[#E5DFD5] dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 shadow-xs'
-      }`}
+      className={`group relative rounded-2xl border p-5 transition-all duration-150 cursor-pointer flex flex-col justify-between h-full select-none light-card ${isSelected ? 'border-[#C15F3C] ring-1 ring-[#C15F3C] bg-[#C15F3C]/10 dark:border-amber-400 dark:ring-amber-400 dark:bg-amber-500/10' : 'border-[#E5DFD5] dark:border-white/10 hover:border-[#C15F3C] dark:hover:border-amber-500/30 hover:shadow-[#C15F3C]/10 dark:hover:shadow-amber-500/20'}`}
     >
       <div className="flex flex-col">
         {/* Header row: Checkbox, Category, Action Menu */}
@@ -72,7 +68,7 @@ export function SkillCard({
             {onToggleSelect && (
               <label
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center cursor-pointer p-0.5 -ml-1 rounded hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center cursor-pointer p-0.5 -ml-1 rounded hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
                 title="Select skill"
               >
                 <input
@@ -83,12 +79,12 @@ export function SkillCard({
                     e.stopPropagation();
                     onToggleSelect(skill.id);
                   }}
-                  className="w-4 h-4 rounded border-[#D5CFC5] dark:border-slate-700 bg-white dark:bg-slate-950 text-[#C15F3C] dark:text-cyan-400 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 cursor-pointer shrink-0"
+                  className="w-4 h-4 rounded border-[#D5CFC5] dark:border-[#3a3a3a] bg-white dark:bg-[#0a0a0a] text-[#C15F3C] dark:text-amber-400 focus:ring-[#C15F3C] dark:focus:ring-amber-400 cursor-pointer shrink-0"
                 />
               </label>
             )}
 
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#645F57] dark:text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#918B80] dark:text-gray-400">
               {skill.category}
             </span>
           </div>
@@ -97,7 +93,7 @@ export function SkillCard({
           <div className="relative" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="p-1 rounded-lg text-[#918B80] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-1 rounded-lg text-[#918B80] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-[#2a2a2a] transition-colors cursor-pointer"
               aria-label="Skill actions menu"
             >
               <MoreVertical className="w-4 h-4" />
@@ -106,15 +102,15 @@ export function SkillCard({
             {showMenu && (
               <>
                 <div className="fixed inset-0 z-30" onClick={() => setShowMenu(false)} />
-                <div className="absolute right-0 mt-1 w-44 rounded-xl border border-[#E5DFD5] dark:border-slate-800 bg-[#FFFFFF] dark:bg-[#0D1424] shadow-xl p-1 z-40 text-xs">
+                <div className="absolute right-0 mt-1 w-44 rounded-xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] shadow-xl p-1 z-40 text-xs">
                   <button
                     onClick={() => {
                       setShowMenu(false);
                       onEdit(skill);
                     }}
-                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#3D3B39] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#3D3B39] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-300 dark:hover:text-white dark:hover:bg-[#2a2a2a] transition-colors cursor-pointer"
                   >
-                    <Edit2 className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+                    <Edit2 className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
                     <span>Edit Skill</span>
                   </button>
 
@@ -123,7 +119,7 @@ export function SkillCard({
                       setShowMenu(false);
                       onDuplicate(skill.id);
                     }}
-                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#3D3B39] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#3D3B39] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-300 dark:hover:text-white dark:hover:bg-[#2a2a2a] transition-colors cursor-pointer"
                   >
                     <CopyPlus className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
                     <span>Duplicate</span>
@@ -134,13 +130,13 @@ export function SkillCard({
                       setShowMenu(false);
                       onToggleArchive(skill.id);
                     }}
-                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#3D3B39] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#3D3B39] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-300 dark:hover:text-white dark:hover:bg-[#2a2a2a] transition-colors cursor-pointer"
                   >
                     <Archive className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                     <span>{skill.status === 'deprecated' ? 'Unarchive' : 'Archive'}</span>
                   </button>
 
-                  <div className="my-1 border-t border-[#E5DFD5] dark:border-slate-800" />
+                  <div className="my-1 border-t border-[#E5DFD5] dark:border-[#3a3a3a]" />
 
                   <button
                     onClick={() => {
@@ -159,18 +155,18 @@ export function SkillCard({
         </div>
 
         {/* Title */}
-        <h3 className="font-semibold text-sm text-[#1F1E1B] group-hover:text-[#C15F3C] dark:text-slate-100 dark:group-hover:text-cyan-300 transition-colors mb-1.5 truncate">
+        <h3 className="font-semibold text-sm text-[#1F1E1B] dark:text-white group-hover:text-[#C15F3C] dark:group-hover:text-amber-300 transition-colors mb-1.5 truncate">
           {skill.name}
         </h3>
 
         {/* Description: Clean 2-line clamp */}
-        <p className="text-xs text-[#645F57] dark:text-slate-400 line-clamp-2 leading-relaxed h-9 mb-3">
+        <p className="text-xs text-[#645F57] dark:text-gray-400 line-clamp-2 leading-relaxed h-9 mb-3">
           {skill.description}
         </p>
       </div>
 
       {/* Footer Meta & Quick Copy */}
-      <div className="pt-3 border-t border-[#EFEAE2] dark:border-slate-800/80 flex items-center justify-between text-xs text-[#645F57] dark:text-slate-400 mt-2">
+      <div className="pt-3 border-t border-[#E5DFD5] dark:border-white/10 flex items-center justify-between text-xs text-[#645F57] dark:text-gray-400 mt-2">
         <div className="flex items-center gap-2 text-[11px]">
           <span>{paramCount} {paramCount === 1 ? 'parameter' : 'parameters'}</span>
           <span>•</span>
@@ -179,7 +175,7 @@ export function SkillCard({
 
         <button
           onClick={handleCopySchema}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-slate-800/80 hover:bg-[#EAE4DC] dark:hover:bg-slate-700 text-[#3D3B39] dark:text-slate-300 text-[11px] font-medium transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-gray-300 text-[11px] font-medium transition-colors cursor-pointer"
           title="Copy OpenAI Tool Schema"
         >
           {hasCopied ? (

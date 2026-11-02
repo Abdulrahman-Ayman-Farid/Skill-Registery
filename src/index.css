@@ -24,12 +24,28 @@
     --color-claude-terracotta-border: rgba(193, 95, 60, 0.25);
     --color-claude-amber: #D97706;
 
+    /* Claude Vault Light Mode */
+    --color-vault-bg: #FAF8F5;
+    --color-vault-sidebar: #F3EFEA;
+    --color-vault-card: #FFFFFF;
+    --color-vault-surface: #F8F5EF;
+    --color-vault-surface-hover: #EFE9E0;
+    --color-vault-border: #E5DFD5;
+    --color-vault-border-subtle: #EFEAE2;
+    --color-vault-text: #1F1E1B;
+    --color-vault-text-muted: #645F57;
+    --color-vault-text-subtle: #918B80;
+    --color-vault-accent: #C15F3C;
+    --color-vault-accent-hover: #A84E2E;
+    --color-vault-accent-bg: rgba(193, 95, 60, 0.08);
+    --color-vault-accent-border: rgba(193, 95, 60, 0.25);
+
     /* Gemini Cosmic & Neon Dark Mode */
-    --color-gemini-bg: #070A13;
-    --color-gemini-sidebar: #0A0F1D;
-    --color-gemini-card: #0D1424;
-    --color-gemini-surface: #111B30;
-    --color-gemini-surface-hover: #16233E;
+    --color-gemini-bg: #0a0a0a;
+    --color-gemini-sidebar: #111111;
+    --color-gemini-card: #1a1a1a;
+    --color-gemini-surface: #1f1f1f;
+    --color-gemini-surface-hover: #2a2a2a;
     --color-gemini-border: rgba(99, 102, 241, 0.22);
     --color-gemini-border-subtle: rgba(148, 163, 184, 0.12);
     --color-gemini-text: #F8FAFC;
@@ -38,11 +54,45 @@
     --color-gemini-indigo: #6366F1;
     --color-gemini-cyan: #06B6D4;
     --color-gemini-neon-glow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 35px rgba(6, 182, 212, 0.2);
+
+    /* Glassmorphism theme */
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-strong: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-blur: 24px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .dark {
+    /* Claude Vault Dark Mode */
+    --color-vault-bg: #0a0a0a;
+    --color-vault-sidebar: #111111;
+    --color-vault-card: #1a1a1a;
+    --color-vault-surface: #1f1f1f;
+    --color-vault-surface-hover: #2a2a2a;
+    --color-vault-border: #3a3a3a;
+    --color-vault-border-subtle: #2a2a2a;
+    --color-vault-text: #F5F5F5;
+    --color-vault-text-muted: #9A9A9A;
+    --color-vault-text-subtle: #6b7280;
+    --color-vault-accent: #C15F3C;
+    --color-vault-accent-hover: #A84E2E;
+    --color-vault-accent-bg: rgba(193, 95, 60, 0.12);
+    --color-vault-accent-border: rgba(193, 95, 60, 0.35);
   }
 
   body {
     font-family: var(--font-sans);
+    background: var(--color-claude-bg);
+    min-height: 100vh;
     transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .dark body { background: var(--color-vault-bg); }
+
+  #root {
+    position: relative;
+    z-index: 1;
   }
 
   code, pre, kbd {
@@ -63,13 +113,13 @@
   border-radius: 4px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.25);
+  background: rgba(193, 95, 60, 0.25);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(140, 130, 120, 0.45);
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 182, 212, 0.45);
+  background: rgba(193, 95, 60, 0.45);
 }
 
 /* Neon glow utility classes for Dark (Gemini) Mode */
@@ -93,4 +143,61 @@
 }
 .claude-card-shadow:hover {
   box-shadow: 0 4px 16px rgba(45, 35, 25, 0.08), 0 1px 4px rgba(45, 35, 25, 0.04);
+}
+
+/* Claude Vault utility classes */
+.vault-card-shadow {
+  box-shadow: 0 1px 3px rgba(45, 35, 25, 0.04), 0 4px 12px rgba(45, 35, 25, 0.03);
+}
+.vault-card-shadow:hover {
+  box-shadow: 0 4px 16px rgba(45, 35, 25, 0.08), 0 1px 4px rgba(45, 35, 25, 0.04);
+}
+.dark .vault-card-shadow {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.dark .vault-card-shadow:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+}
+.vault-glow-accent {
+  box-shadow: 0 0 15px rgba(193, 95, 60, 0.2);
+}
+.dark .vault-glow-accent {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+}
+.vault-border-glow {
+  border-color: rgba(193, 95, 60, 0.4);
+}
+.dark .vault-border-glow {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+/* Dark-mode terracotta glow utility classes */
+.dark .amber-glow-accent { box-shadow: 0 0 20px rgba(193, 95, 60, 0.35), 0 0 35px rgba(193, 95, 60, 0.15); }
+.dark .amber-glow-soft { box-shadow: 0 0 15px rgba(193, 95, 60, 0.2); }
+.dark .amber-border-glow { border-color: rgba(193, 95, 60, 0.4); box-shadow: 0 0 15px rgba(193, 95, 60, 0.2); }
+.dark .amber-text-glow { text-shadow: 0 0 12px rgba(193, 95, 60, 0.6), 0 0 20px rgba(193, 95, 60, 0.4); }
+.dark .amber-card-shadow { box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
+.dark .amber-card-shadow:hover { box-shadow: 0 0 30px rgba(193, 95, 60, 0.15); }
+
+@layer utilities {
+  .light-card {
+    background: var(--color-claude-card);
+    border: 1px solid var(--color-claude-border);
+    box-shadow: 0 1px 3px rgba(45, 35, 25, 0.04), 0 4px 12px rgba(45, 35, 25, 0.03);
+  }
+  .dark .light-card {
+    background: var(--color-vault-card);
+    border: 1px solid var(--color-vault-border);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  .text-primary { color: var(--color-claude-text); }
+  .dark .text-primary { color: var(--color-vault-text); }
+  .text-muted { color: var(--color-claude-text-muted); }
+  .dark .text-muted { color: var(--color-vault-text-muted); }
+  .text-subtle { color: var(--color-claude-text-subtle); }
+  .dark .text-subtle { color: var(--color-vault-text-subtle); }
+  .glass { background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
+  .glass-strong { background: var(--glass-bg-strong); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid rgba(255, 255, 255, 0.20); box-shadow: var(--glass-shadow); }
+  .glass-glow { filter: drop-shadow(0 0 12px rgba(193, 95, 60, 0.4)); }
 }
