@@ -36,9 +36,9 @@ const CATEGORY_COLORS: Record<string, { fill: string; stroke: string; text: stri
   Data: { fill: '#10b981', stroke: '#34d399', text: '#a7f3d0' },
   Files: { fill: '#f59e0b', stroke: '#fbbf24', text: '#fde68a' },
   Communication: { fill: '#ec4899', stroke: '#f472b6', text: '#fbcfe8' },
-  'Developer Tools': { fill: '#06b6d4', stroke: '#22d3ee', text: '#cffafe' },
+  'Developer Tools': { fill: '#f59e0b', stroke: '#fbbf24', text: '#fde68a' },
   Vision: { fill: '#8b5cf6', stroke: '#a78bfa', text: '#ede9fe' },
-  RAG: { fill: '#6366f1', stroke: '#818cf8', text: '#e0e7ff' },
+  RAG: { fill: '#f59e0b', stroke: '#fbbf24', text: '#fde68a' },
   Productivity: { fill: '#14b8a6', stroke: '#2dd4bf', text: '#ccfbf1' },
 };
 
@@ -139,7 +139,7 @@ export function AgentDependencyGraph({
       .attr('orient', 'auto')
       .append('path')
       .attr('d', 'M0,-5L10,0L0,5')
-      .attr('fill', isDarkMode ? '#818cf8' : '#C15F3C');
+      .attr('fill', isDarkMode ? '#f59e0b' : '#C15F3C');
 
     // Cycle warning arrow marker (Red/Amber)
     defs
@@ -204,8 +204,8 @@ export function AgentDependencyGraph({
       .append('line')
       .attr('stroke', (d) => {
         if (d.type === 'cycle') return '#f43f5e';
-        if (d.type === 'shared_definition') return isDarkMode ? '#06b6d4' : '#0284c7';
-        return isDarkMode ? '#4f46e5' : '#C15F3C';
+        if (d.type === 'shared_definition') return isDarkMode ? '#fb923c' : '#0284c7';
+        return isDarkMode ? '#f59e0b' : '#C15F3C';
       })
       .attr('stroke-width', (d) => (d.type === 'cycle' ? 2.5 : d.type === 'shared_definition' ? 1.5 : 1.8))
       .attr('stroke-opacity', (d) => (d.type === 'cycle' ? 0.95 : d.type === 'shared_definition' ? 0.45 : 0.7))
@@ -226,7 +226,7 @@ export function AgentDependencyGraph({
       .append('text')
       .attr('font-size', '9px')
       .attr('font-family', 'ui-monospace, monospace')
-      .attr('fill', (d) => (d.type === 'cycle' ? '#f43f5e' : isDarkMode ? '#22d3ee' : '#0369a1'))
+      .attr('fill', (d) => (d.type === 'cycle' ? '#f43f5e' : isDarkMode ? '#f59e0b' : '#0369a1'))
       .attr('text-anchor', 'middle')
       .text((d) => (d.type === 'cycle' ? '⚠️ Cycle Loop' : d.sharedItem ? 'Shared Def' : ''));
 
@@ -286,7 +286,7 @@ export function AgentDependencyGraph({
       .append('circle')
       .attr('r', 27)
       .attr('fill', 'none')
-      .attr('stroke', isDarkMode ? '#22d3ee' : '#C15F3C')
+      .attr('stroke', isDarkMode ? '#f59e0b' : '#C15F3C')
       .attr('stroke-width', 2.5)
       .attr('stroke-dasharray', '4,2')
       .attr('class', 'animate-pulse');
@@ -336,7 +336,7 @@ export function AgentDependencyGraph({
       .append('text')
       .attr('dy', 34)
       .attr('text-anchor', 'middle')
-      .attr('fill', isDarkMode ? '#e2e8f0' : '#1F1E1B')
+      .attr('fill', isDarkMode ? '#ffffff' : '#1F1E1B')
       .attr('font-size', '10px')
       .attr('font-weight', '600')
       .attr('pointer-events', 'none')
@@ -347,7 +347,7 @@ export function AgentDependencyGraph({
       .append('text')
       .attr('dy', 45)
       .attr('text-anchor', 'middle')
-      .attr('fill', isDarkMode ? '#94a3b8' : '#645F57')
+      .attr('fill', isDarkMode ? '#9ca3af' : '#645F57')
       .attr('font-size', '8.5px')
       .attr('font-family', 'ui-monospace, monospace')
       .attr('pointer-events', 'none')
@@ -453,7 +453,7 @@ export function AgentDependencyGraph({
   return (
     <div className="space-y-4">
       {/* Status & Diagnostic Header */}
-      <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 p-4 rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] text-xs claude-card-shadow dark:shadow-[0_0_25px_rgba(0,0,0,0.5)]">
+      <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 p-4 rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] text-xs claude-card-shadow dark:shadow-[0_0_25px_rgba(0,0,0,0.5)]">
         <div className="flex items-center gap-3">
           <div
             className={`w-10 h-10 rounded-xl flex items-center justify-center border shadow-xs ${
@@ -501,7 +501,7 @@ export function AgentDependencyGraph({
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
               simulatedCycle
                 ? 'bg-rose-500 text-white border-rose-600 shadow-xs'
-                : 'bg-[#F8F5EF] dark:bg-[#070A13] text-[#645F57] dark:text-slate-300 border-[#E5DFD5] dark:border-indigo-500/30 hover:border-rose-400'
+                : 'bg-[#F8F5EF] dark:bg-[#0a0a0a] text-[#645F57] dark:text-slate-300 border-[#E5DFD5] dark:border-[#3a3a3a] hover:border-rose-400'
             }`}
             title="Inject a feedback loop to test circular dependency highlighting"
           >
@@ -509,7 +509,7 @@ export function AgentDependencyGraph({
           </button>
 
           {/* Filter Modes */}
-          <div className="flex rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] p-0.5 border border-[#E5DFD5] dark:border-indigo-500/30">
+          <div className="flex rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] p-0.5 border border-[#E5DFD5] dark:border-[#3a3a3a]">
             {(
               [
                 { id: 'all', label: 'All Links' },
@@ -523,7 +523,7 @@ export function AgentDependencyGraph({
                 onClick={() => setFilterMode(m.id)}
                 className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all ${
                   filterMode === m.id
-                    ? 'bg-[#C15F3C] text-white dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 shadow-xs'
+                    ? 'bg-[#C15F3C] text-white dark:bg-gradient-to-r dark:from-amber-600 dark:to-amber-600 shadow-xs'
                     : 'text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
                 }`}
               >
@@ -578,20 +578,20 @@ export function AgentDependencyGraph({
         {/* Force-Directed Graph SVG Canvas (3 Cols) */}
         <div
           ref={containerRef}
-          className="lg:col-span-3 relative h-[480px] rounded-3xl border border-[#E5DFD5] dark:border-indigo-500/30 bg-[#FAF8F5] dark:bg-[#070A13] overflow-hidden claude-card-shadow dark:shadow-[0_0_30px_rgba(0,0,0,0.8)]"
+          className="lg:col-span-3 relative h-[480px] rounded-3xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FAF8F5] dark:bg-[#0a0a0a] overflow-hidden claude-card-shadow dark:shadow-[0_0_30px_rgba(0,0,0,0.8)]"
         >
           {/* Floating Canvas Badges & Legend */}
           <div className="absolute top-3 left-3 z-10 flex items-center gap-2 pointer-events-none">
-            <span className="px-2.5 py-1 rounded-lg bg-[#FFFFFF]/90 dark:bg-[#0D1424]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-indigo-500/30 text-[10px] font-mono text-[#645F57] dark:text-cyan-400 font-semibold shadow-xs">
+            <span className="px-2.5 py-1 rounded-lg bg-[#FFFFFF]/90 dark:bg-[#1a1a1a]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-[#3a3a3a] text-[10px] font-mono text-[#645F57] dark:text-amber-400 font-semibold shadow-xs">
               Interactive Force Layout • {graphData.nodes.length} Nodes • {graphData.links.length} Edges
             </span>
           </div>
 
           {/* Floating Canvas Zoom Controls */}
-          <div className="absolute top-3 right-3 z-10 flex items-center gap-1 p-1 rounded-xl bg-[#FFFFFF]/90 dark:bg-[#0D1424]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-indigo-500/30 shadow-xs">
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-1 p-1 rounded-xl bg-[#FFFFFF]/90 dark:bg-[#1a1a1a]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-[#3a3a3a] shadow-xs">
             <button
               onClick={handleZoomIn}
-              className="p-1.5 rounded-lg text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-white hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-lg text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-white hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
               title="Zoom In"
               aria-label="Zoom In"
             >
@@ -599,7 +599,7 @@ export function AgentDependencyGraph({
             </button>
             <button
               onClick={handleZoomOut}
-              className="p-1.5 rounded-lg text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-white hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-lg text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-white hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
               title="Zoom Out"
               aria-label="Zoom Out"
             >
@@ -608,7 +608,7 @@ export function AgentDependencyGraph({
             <div className="w-px h-3.5 bg-[#E5DFD5] dark:bg-slate-700 mx-0.5" />
             <button
               onClick={handleResetZoom}
-              className="p-1.5 rounded-lg text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-white hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-lg text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-white hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
               title="Reset View"
               aria-label="Reset View"
             >
@@ -617,9 +617,9 @@ export function AgentDependencyGraph({
           </div>
 
           {/* Interactive Legend */}
-          <div className="absolute bottom-3 left-3 z-10 flex items-center gap-3 px-3 py-1.5 rounded-xl bg-[#FFFFFF]/90 dark:bg-[#0D1424]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-indigo-500/25 text-[10px] font-mono text-[#645F57] dark:text-slate-400 shadow-xs pointer-events-none">
+          <div className="absolute bottom-3 left-3 z-10 flex items-center gap-3 px-3 py-1.5 rounded-xl bg-[#FFFFFF]/90 dark:bg-[#1a1a1a]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-[#3a3a3a] text-[10px] font-mono text-[#645F57] dark:text-slate-400 shadow-xs pointer-events-none">
             <div className="flex items-center gap-1">
-              <span className="w-3 h-0.5 bg-[#C15F3C] dark:bg-indigo-400 inline-block" />
+              <span className="w-3 h-0.5 bg-[#C15F3C] dark:bg-amber-400 inline-block" />
               <span>Dependency</span>
             </div>
             <div className="flex items-center gap-1">
@@ -627,7 +627,7 @@ export function AgentDependencyGraph({
               <span>Circular Cycle</span>
             </div>
             <div className="flex items-center gap-1">
-              <span className="w-3 h-0.5 border-b border-dashed border-cyan-500 inline-block" />
+              <span className="w-3 h-0.5 border-b border-dashed border-amber-500 inline-block" />
               <span>Shared Credential/Schema</span>
             </div>
           </div>
@@ -637,12 +637,12 @@ export function AgentDependencyGraph({
         </div>
 
         {/* Node & Dependency Inspector Panel (1 Col) */}
-        <div className="lg:col-span-1 rounded-3xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-4 flex flex-col justify-between text-xs claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)] h-[480px] overflow-y-auto">
+        <div className="lg:col-span-1 rounded-3xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-4 flex flex-col justify-between text-xs claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)] h-[480px] overflow-y-auto">
           {selectedSkill ? (
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C15F3C] dark:text-cyan-300">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C15F3C] dark:text-amber-300">
                     {selectedSkill.category}
                   </span>
                   <span className="text-[10px] font-mono text-[#918B80] dark:text-slate-500">
@@ -700,7 +700,7 @@ export function AgentDependencyGraph({
               )}
 
               {/* Upstream Prerequisites (Dependency Editor) */}
-              <div className="space-y-1.5 border-t border-[#EFEAE2] dark:border-indigo-500/20 pt-3">
+              <div className="space-y-1.5 border-t border-[#EFEAE2] dark:border-[#2a2a2a] pt-3">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-[11px] text-[#1F1E1B] dark:text-slate-200">
                     Prerequisite Skills ({selectedSkill.dependencies?.length || 0})
@@ -730,10 +730,10 @@ export function AgentDependencyGraph({
                           onClick={() => handleToggleDependency(other.id)}
                           className={`flex items-center justify-between p-2 rounded-xl border text-[11px] cursor-pointer transition-all ${
                             isDep
-                              ? 'border-[#C15F3C]/40 bg-[#C15F3C]/10 text-[#C15F3C] dark:border-cyan-400/40 dark:bg-cyan-500/10 dark:text-cyan-300 font-semibold'
+                              ? 'border-[#C15F3C]/40 bg-[#C15F3C]/10 text-[#C15F3C] dark:border-amber-400/40 dark:bg-amber-500/10 dark:text-amber-300 font-semibold'
                               : isCycleHazard || isTargetActiveError
                               ? 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-semibold shadow-xs ring-1 ring-rose-500/40'
-                              : 'border-[#E5DFD5] dark:border-slate-800 text-[#645F57] dark:text-slate-400 hover:bg-[#F8F5EF] dark:hover:bg-slate-800/60'
+                              : 'border-[#E5DFD5] dark:border-[#3a3a3a] text-[#645F57] dark:text-slate-400 hover:bg-[#F8F5EF] dark:hover:bg-[#2a2a2a]/60'
                           }`}
                           title={
                             isCycleHazard
@@ -752,7 +752,7 @@ export function AgentDependencyGraph({
 
                           <div className="shrink-0 flex items-center gap-1">
                             {isDep ? (
-                              <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-[#C15F3C]/20 dark:bg-cyan-500/20">
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-[#C15F3C]/20 dark:bg-amber-500/20">
                                 Linked
                               </span>
                             ) : isCycleHazard ? (
@@ -773,11 +773,11 @@ export function AgentDependencyGraph({
 
               {/* Shared Definitions & Credentials */}
               {selectedSkill.config?.apiKeyName && (
-                <div className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-slate-800 text-[10px]">
+                <div className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a] text-[10px]">
                   <span className="font-semibold text-[#645F57] dark:text-slate-400 block mb-1">
                     Credential Scope:
                   </span>
-                  <div className="flex items-center gap-1 font-mono text-[#1F1E1B] dark:text-cyan-300">
+                  <div className="flex items-center gap-1 font-mono text-[#1F1E1B] dark:text-amber-300">
                     <Key className="w-3 h-3 text-amber-500" />
                     <span>{selectedSkill.config.apiKeyName}</span>
                   </div>
@@ -786,7 +786,7 @@ export function AgentDependencyGraph({
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-center p-4 text-[#918B80] dark:text-slate-500 space-y-2">
-              <Share2 className="w-8 h-8 stroke-1 text-[#C15F3C]/60 dark:text-cyan-400/60" />
+              <Share2 className="w-8 h-8 stroke-1 text-[#C15F3C]/60 dark:text-amber-400/60" />
               <p className="font-semibold text-xs text-[#1F1E1B] dark:text-slate-300">
                 Click any Node to Inspect
               </p>
@@ -800,7 +800,7 @@ export function AgentDependencyGraph({
           {selectedSkill && (
             <button
               onClick={() => setSelectedNodeId(null)}
-              className="mt-3 w-full py-1.5 rounded-xl border border-[#E5DFD5] dark:border-slate-700 hover:bg-[#F8F5EF] dark:hover:bg-slate-800 text-center text-[11px] font-medium text-[#645F57] dark:text-slate-400 transition-colors"
+              className="mt-3 w-full py-1.5 rounded-xl border border-[#E5DFD5] dark:border-slate-700 hover:bg-[#F8F5EF] dark:hover:bg-[#2a2a2a] text-center text-[11px] font-medium text-[#645F57] dark:text-slate-400 transition-colors"
             >
               Clear Inspector
             </button>
@@ -810,9 +810,9 @@ export function AgentDependencyGraph({
 
       {/* Shared Definitions Summary Bar */}
       {analysis.sharedDefinitions.length > 0 && (
-        <div className="p-4 rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] text-xs space-y-2 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.4)]">
+        <div className="p-4 rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] text-xs space-y-2 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.4)]">
           <div className="flex items-center gap-2">
-            <Share2 className="w-4 h-4 text-[#C15F3C] dark:text-cyan-400" />
+            <Share2 className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
             <h4 className="font-bold text-xs text-[#1F1E1B] dark:text-white">
               Shared Tool Definitions & Parameter Signatures ({analysis.sharedDefinitions.length})
             </h4>
@@ -822,9 +822,9 @@ export function AgentDependencyGraph({
             {analysis.sharedDefinitions.map((def, idx) => (
               <div
                 key={idx}
-                className="p-2.5 rounded-xl border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-[#070A13] text-[11px] space-y-1"
+                className="p-2.5 rounded-xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#F8F5EF] dark:bg-[#0a0a0a] text-[11px] space-y-1"
               >
-                <div className="font-semibold text-[#1F1E1B] dark:text-cyan-300 font-mono text-[10px]">
+                <div className="font-semibold text-[#1F1E1B] dark:text-amber-300 font-mono text-[10px]">
                   {def.label}
                 </div>
                 <div className="text-[10px] text-[#645F57] dark:text-slate-400 line-clamp-1">
@@ -838,7 +838,7 @@ export function AgentDependencyGraph({
 
       {/* Sequential Execution Pipeline (Topological DAG Order) */}
       {!analysis.hasCycle && analysis.topologicalOrder && (
-        <div className="p-4 rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] text-xs space-y-2 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.4)]">
+        <div className="p-4 rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] text-xs space-y-2 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.4)]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Layers className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -857,8 +857,8 @@ export function AgentDependencyGraph({
               if (!s) return null;
               return (
                 <React.Fragment key={s.id}>
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#E5DFD5] dark:border-indigo-500/30 bg-[#F8F5EF] dark:bg-[#070A13] shrink-0">
-                    <span className="w-4 h-4 rounded-full bg-[#C15F3C] dark:bg-cyan-500 text-white font-bold text-[9px] flex items-center justify-center">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#F8F5EF] dark:bg-[#0a0a0a] shrink-0">
+                    <span className="w-4 h-4 rounded-full bg-[#C15F3C] dark:bg-amber-500 text-white font-bold text-[9px] flex items-center justify-center">
                       {idx + 1}
                     </span>
                     <span className="font-medium text-xs text-[#1F1E1B] dark:text-slate-200">

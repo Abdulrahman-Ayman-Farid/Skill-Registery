@@ -395,10 +395,10 @@ export function SkillEditorModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl max-h-[92vh] bg-[#FAF8F5] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-4xl max-h-[92vh] bg-[#FAF8F5] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-2xl shadow-2xl flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
       >
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-slate-800/80 bg-[#FAF8F5]/90 dark:bg-slate-900/60 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-[#2a2a2a] bg-[#FAF8F5]/90 dark:bg-[#111111]/60 flex items-center justify-between">
           <div>
             <h2 className="text-lg font-bold text-[#1F1E1B] dark:text-white tracking-tight flex items-center gap-2">
               <span>{isEditing ? `Edit "${initialSkill?.name}"` : 'Register New AI Agent Skill'}</span>
@@ -410,13 +410,13 @@ export function SkillEditorModal({
 
           {/* Mode Switcher */}
           <div className="flex items-center gap-2">
-            <div className="flex rounded-xl bg-[#F3EFEA] dark:bg-[#070A13] p-0.5 border border-[#E5DFD5] dark:border-slate-800 text-xs font-semibold">
+            <div className="flex rounded-xl bg-[#F3EFEA] dark:bg-[#0a0a0a] p-0.5 border border-[#E5DFD5] dark:border-[#3a3a3a] text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => handleModeChange('visual')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
                   editorMode === 'visual'
-                    ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 text-white shadow-sm'
+                    ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white shadow-sm'
                     : 'text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200'
                 }`}
               >
@@ -428,7 +428,7 @@ export function SkillEditorModal({
                 onClick={() => handleModeChange('code')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
                   editorMode === 'code'
-                    ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 text-white shadow-sm'
+                    ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white shadow-sm'
                     : 'text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200'
                 }`}
               >
@@ -440,14 +440,14 @@ export function SkillEditorModal({
                 onClick={() => handleModeChange('history')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
                   editorMode === 'history'
-                    ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 text-white shadow-sm'
+                    ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white shadow-sm'
                     : 'text-[#645F57] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200'
                 }`}
               >
                 <History className="w-3.5 h-3.5" />
                 <span>Version History</span>
                 {versionHistory.length > 0 && (
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-[#EAE4DC] text-[#C15F3C] dark:bg-slate-800 dark:text-cyan-300">
+                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-[#EAE4DC] text-[#C15F3C] dark:bg-slate-800 dark:text-amber-300">
                     {versionHistory.length}
                   </span>
                 )}
@@ -514,7 +514,7 @@ export function SkillEditorModal({
               {/* Basic Metadata */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-[#1F1E1B] dark:text-slate-100 uppercase tracking-wider flex items-center gap-2">
-                  <Info className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+                  <Info className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
                   <span>General Information</span>
                 </h3>
 
@@ -529,7 +529,7 @@ export function SkillEditorModal({
                       placeholder="e.g. Brave Web Search"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500"
                     />
                     {formErrors.name && <p className="text-[11px] text-rose-500">{formErrors.name}</p>}
                   </div>
@@ -541,7 +541,7 @@ export function SkillEditorModal({
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value as SkillCategory)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500"
                     >
                       {VALID_CATEGORIES.map((cat) => (
                         <option key={cat} value={cat}>
@@ -561,7 +561,7 @@ export function SkillEditorModal({
                       placeholder="Describe what this skill does and the exact scenarios when an agent should invoke it..."
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500"
                     />
                     {formErrors.description && (
                       <p className="text-[11px] text-rose-500">{formErrors.description}</p>
@@ -575,7 +575,7 @@ export function SkillEditorModal({
                     <select
                       value={executionType}
                       onChange={(e) => setExecutionType(e.target.value as ExecutionType)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500"
                     >
                       {VALID_EXECUTION_TYPES.map((type) => (
                         <option key={type} value={type}>
@@ -595,7 +595,7 @@ export function SkillEditorModal({
                       placeholder="1.0.0"
                       value={version}
                       onChange={(e) => setVersion(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
 
@@ -609,7 +609,7 @@ export function SkillEditorModal({
                       placeholder="e.g. Internal Team"
                       value={author}
                       onChange={(e) => setAuthor(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500"
                     />
                   </div>
 
@@ -618,7 +618,7 @@ export function SkillEditorModal({
                     <select
                       value={status}
                       onChange={(e) => setStatus(e.target.value as SkillStatus)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500"
                     >
                       {VALID_STATUSES.map((st) => (
                         <option key={st} value={st}>
@@ -631,11 +631,11 @@ export function SkillEditorModal({
               </div>
 
               {/* Dynamic Input Schema Parameters */}
-              <div className="border-t border-[#EFEAE2] dark:border-slate-800/80 pt-6 space-y-4">
+              <div className="border-t border-[#EFEAE2] dark:border-[#2a2a2a] pt-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-sm font-bold text-[#1F1E1B] dark:text-slate-100 uppercase tracking-wider flex items-center gap-2">
-                      <Layers className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+                      <Layers className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
                       <span>Input Schema (Tool Arguments)</span>
                     </h3>
                     <p className="text-[11px] text-[#645F57] dark:text-slate-400 mt-0.5">
@@ -646,7 +646,7 @@ export function SkillEditorModal({
                   <button
                     type="button"
                     onClick={handleAddParameter}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-slate-800 dark:hover:bg-slate-700 text-[#1F1E1B] dark:text-slate-200 text-xs font-semibold border border-[#E5DFD5] dark:border-slate-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-slate-800 dark:hover:bg-slate-700 text-[#1F1E1B] dark:text-slate-200 text-xs font-semibold border border-[#E5DFD5] dark:border-[#3a3a3a] transition-colors"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add Parameter</span>
@@ -657,7 +657,7 @@ export function SkillEditorModal({
                   {inputSchema.map((param, index) => (
                     <div
                       key={index}
-                      className="p-4 rounded-2xl border border-[#E5DFD5] dark:border-slate-800 bg-[#F8F5EF] dark:bg-slate-900/60 space-y-3 text-xs"
+                      className="p-4 rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#F8F5EF] dark:bg-[#111111]/60 space-y-3 text-xs"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-2 flex-1">
@@ -667,14 +667,14 @@ export function SkillEditorModal({
                             placeholder="param_name"
                             value={param.name}
                             onChange={(e) => handleUpdateParameter(index, { name: e.target.value })}
-                            className="bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                            className="bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                           />
                           <select
                             value={param.type}
                             onChange={(e) =>
                               handleUpdateParameter(index, { type: e.target.value as ParameterType })
                             }
-                            className="bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                            className="bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                           >
                             <option value="string">string</option>
                             <option value="number">number</option>
@@ -687,7 +687,7 @@ export function SkillEditorModal({
                               type="checkbox"
                               checked={param.required}
                               onChange={(e) => handleUpdateParameter(index, { required: e.target.checked })}
-                              className="rounded border-[#D5CFC5] dark:border-slate-700 bg-white dark:bg-slate-950 text-[#C15F3C] dark:text-cyan-400 focus:ring-[#C15F3C]"
+                              className="rounded border-[#D5CFC5] dark:border-[#3a3a3a] bg-white dark:bg-[#0a0a0a] text-[#C15F3C] dark:text-amber-400 focus:ring-[#C15F3C]"
                             />
                             <span className="text-[#3D3B39] dark:text-slate-300 font-medium text-[11px]">Required</span>
                           </label>
@@ -710,14 +710,14 @@ export function SkillEditorModal({
                           placeholder="Parameter description for agent reasoning..."
                           value={param.description}
                           onChange={(e) => handleUpdateParameter(index, { description: e.target.value })}
-                          className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                          className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                         />
                         <input
                           type="text"
                           placeholder="Example value (e.g. quantum physics)"
                           value={param.exampleValue !== undefined ? String(param.exampleValue) : ''}
                           onChange={(e) => handleUpdateParameter(index, { exampleValue: e.target.value })}
-                          className="w-full bg-[#FFFFFF] dark:bg-slate-950 border border-[#E5DFD5] dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-[#1F1E1B] dark:text-slate-200 text-xs font-mono focus:border-[#C15F3C] dark:focus:border-cyan-400 outline-none"
+                          className="w-full bg-[#FFFFFF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-lg px-2.5 py-1.5 text-[#1F1E1B] dark:text-slate-200 text-xs font-mono focus:border-[#C15F3C] dark:focus:border-amber-500 outline-none"
                         />
                       </div>
                     </div>
@@ -726,9 +726,9 @@ export function SkillEditorModal({
               </div>
 
               {/* Execution & Security Config */}
-              <div className="border-t border-[#EFEAE2] dark:border-slate-800/80 pt-6 space-y-4">
+              <div className="border-t border-[#EFEAE2] dark:border-[#2a2a2a] pt-6 space-y-4">
                 <h3 className="text-sm font-bold text-[#1F1E1B] dark:text-slate-100 uppercase tracking-wider flex items-center gap-2">
-                  <Wand2 className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+                  <Wand2 className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
                   <span>Execution & Security Settings</span>
                 </h3>
 
@@ -739,7 +739,7 @@ export function SkillEditorModal({
                       type="number"
                       value={timeoutMs}
                       onChange={(e) => setTimeoutMs(Number(e.target.value))}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
 
@@ -749,7 +749,7 @@ export function SkillEditorModal({
                       type="number"
                       value={maxRetries}
                       onChange={(e) => setMaxRetries(Number(e.target.value))}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
 
@@ -759,7 +759,7 @@ export function SkillEditorModal({
                       type="number"
                       value={backoffMs}
                       onChange={(e) => setBackoffMs(Number(e.target.value))}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
 
@@ -770,7 +770,7 @@ export function SkillEditorModal({
                       placeholder="https://api.example.com/v1/skill"
                       value={endpointUrl}
                       onChange={(e) => setEndpointUrl(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
 
@@ -781,7 +781,7 @@ export function SkillEditorModal({
                       placeholder="e.g. BRAVE_API_KEY"
                       value={apiKeyName}
                       onChange={(e) => setApiKeyName(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
 
@@ -792,7 +792,7 @@ export function SkillEditorModal({
                       placeholder="search, web, research, fast"
                       value={tagsInput}
                       onChange={(e) => setTagsInput(e.target.value)}
-                      className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono"
+                      className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono"
                     />
                   </div>
                 </div>
@@ -804,7 +804,7 @@ export function SkillEditorModal({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-semibold text-[#645F57] dark:text-slate-400">Syntax:</span>
-                  <div className="flex rounded-lg bg-[#F3EFEA] dark:bg-[#070A13] p-0.5 border border-[#E5DFD5] dark:border-slate-800 text-xs font-mono">
+                  <div className="flex rounded-lg bg-[#F3EFEA] dark:bg-[#0a0a0a] p-0.5 border border-[#E5DFD5] dark:border-[#3a3a3a] text-xs font-mono">
                     <button
                       type="button"
                       onClick={() => {
@@ -812,7 +812,7 @@ export function SkillEditorModal({
                         syncToCode();
                       }}
                       className={`px-3 py-1 rounded-md transition-colors ${
-                        codeFormat === 'json' ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 text-white' : 'text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                        codeFormat === 'json' ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white' : 'text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
                       }`}
                     >
                       JSON
@@ -824,7 +824,7 @@ export function SkillEditorModal({
                         syncToCode();
                       }}
                       className={`px-3 py-1 rounded-md transition-colors ${
-                        codeFormat === 'yaml' ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 text-white' : 'text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
+                        codeFormat === 'yaml' ? 'bg-[#C15F3C] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white' : 'text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
                       }`}
                     >
                       YAML
@@ -855,25 +855,25 @@ export function SkillEditorModal({
                 value={rawCode}
                 onChange={(e) => setRawCode(e.target.value)}
                 rows={18}
-                className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 font-mono leading-relaxed"
+                className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-500 font-mono leading-relaxed"
                 placeholder={codeFormat === 'json' ? '{\n  "name": "My Skill", ...\n}' : 'name: My Skill\n...'}
               />
             </div>
           )}
 
           {/* Footer Save & Cancel Buttons */}
-          <div className="pt-4 border-t border-[#EFEAE2] dark:border-slate-800/80 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-[#EFEAE2] dark:border-[#2a2a2a] flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-[#C15F3C]/10 hover:bg-[#C15F3C]/20 text-[#C15F3C] border border-[#C15F3C]/30 dark:bg-cyan-500/10 dark:hover:bg-cyan-500/20 dark:text-cyan-300 dark:border-cyan-500/30 text-xs font-semibold transition-colors"
+              className="px-4 py-2 rounded-xl bg-[#C15F3C]/10 hover:bg-[#C15F3C]/20 text-[#C15F3C] border border-[#C15F3C]/30 dark:bg-amber-500/10 dark:hover:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30 text-xs font-semibold transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSaving}
-              className="px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 active:scale-[0.98] text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] text-white dark:bg-amber-500 dark:hover:bg-amber-400 active:scale-[0.98] text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isSaving ? 'Saving...' : isEditing ? 'Save Changes' : 'Create Skill'}
             </button>
