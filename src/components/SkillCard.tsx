@@ -59,7 +59,7 @@ export function SkillCard({
           onViewDetails(skill);
         }
       }}
-      className={`group relative rounded-2xl border p-5 transition-all duration-150 cursor-pointer flex flex-col justify-between h-full select-none glass ${isSelected ? 'border-amber-400 ring-1 ring-amber-400 bg-amber-500/10' : 'border-white/10 hover:border-amber-500/30 hover:shadow-amber-500/20'}`}
+      className={`group relative rounded-2xl border p-5 transition-all duration-150 cursor-pointer flex flex-col justify-between h-full select-none light-card ${isSelected ? 'border-[#C15F3C] ring-1 ring-[#C15F3C] bg-[#C15F3C]/10 dark:border-amber-400 dark:ring-amber-400 dark:bg-amber-500/10' : 'border-[#E5DFD5] dark:border-white/10 hover:border-[#C15F3C] dark:hover:border-amber-500/30 hover:shadow-[#C15F3C]/10 dark:hover:shadow-amber-500/20'}`}
     >
       <div className="flex flex-col">
         {/* Header row: Checkbox, Category, Action Menu */}
@@ -84,7 +84,7 @@ export function SkillCard({
               </label>
             )}
 
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#918B80] dark:text-gray-400">
               {skill.category}
             </span>
           </div>
@@ -155,18 +155,18 @@ export function SkillCard({
         </div>
 
         {/* Title */}
-        <h3 className="font-semibold text-sm text-white group-hover:text-amber-300 transition-colors mb-1.5 truncate">
+        <h3 className="font-semibold text-sm text-[#1F1E1B] dark:text-white group-hover:text-[#C15F3C] dark:group-hover:text-amber-300 transition-colors mb-1.5 truncate">
           {skill.name}
         </h3>
 
         {/* Description: Clean 2-line clamp */}
-        <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed h-9 mb-3">
+        <p className="text-xs text-[#645F57] dark:text-gray-400 line-clamp-2 leading-relaxed h-9 mb-3">
           {skill.description}
         </p>
       </div>
 
       {/* Footer Meta & Quick Copy */}
-      <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-gray-400 mt-2">
+      <div className="pt-3 border-t border-[#E5DFD5] dark:border-white/10 flex items-center justify-between text-xs text-[#645F57] dark:text-gray-400 mt-2">
         <div className="flex items-center gap-2 text-[11px]">
           <span>{paramCount} {paramCount === 1 ? 'parameter' : 'parameters'}</span>
           <span>•</span>

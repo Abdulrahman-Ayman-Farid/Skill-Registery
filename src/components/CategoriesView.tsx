@@ -87,7 +87,7 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
               key={category}
               type="button"
               onClick={() => onSelectCategoryFilter(category)}
-              className="text-left rounded-2xl border border-white/10 bg-white/5 p-5 transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-amber-500 flex flex-col justify-between group hover:border-amber-500/30 hover:shadow-amber-500/20"
+              className="text-left rounded-2xl border border-[#E5DFD5] dark:border-white/10 bg-[#FFFFFF] dark:bg-white/5 p-5 transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-amber-500 flex flex-col justify-between group hover:border-[#C15F3C] dark:hover:border-amber-500/30 hover:shadow-[#C15F3C]/10 dark:hover:shadow-amber-500/20"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -99,7 +99,7 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
                   </span>
                 </div>
 
-                <h3 className="font-bold text-white group-hover:text-amber-300 text-sm transition-colors">
+                <h3 className="font-bold text-[#1F1E1B] dark:text-white group-hover:text-[#C15F3C] dark:group-hover:text-amber-300 text-sm transition-colors">
                   {category}
                 </h3>
                 <p className="text-xs text-gray-400 mt-1 leading-relaxed line-clamp-2">

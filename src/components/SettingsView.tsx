@@ -51,7 +51,7 @@ export function SettingsView({
       </div>
 
       {/* Account Isolation Section */}
-      <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4 shadow-2xl shadow-black/30">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-white/10 bg-[#FFFFFF] dark:bg-white/5 p-6 space-y-4 shadow-2xl shadow-black/5 dark:shadow-black/30">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
