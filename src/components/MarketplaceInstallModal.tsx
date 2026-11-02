@@ -72,11 +72,11 @@ export function MarketplaceInstallModal({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/60 dark:bg-black/80 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-[#FAF8F5] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-2xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-2xl max-h-[90vh] bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 flex flex-col overflow-hidden text-white"
       >
         {/* Header */}
         <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-[#2a2a2a] bg-[#FAF8F5]/90 dark:bg-[#111111]/60 flex items-start justify-between gap-4">

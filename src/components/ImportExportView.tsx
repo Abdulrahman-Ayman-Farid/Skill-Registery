@@ -128,7 +128,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Export Panel */}
-        <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 flex flex-col justify-between space-y-4 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between space-y-4 shadow-2xl shadow-black/30">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <Download className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
@@ -176,7 +176,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
         </div>
 
         {/* Import Panel */}
-        <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-4 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4 shadow-2xl shadow-black/30">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Upload className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />

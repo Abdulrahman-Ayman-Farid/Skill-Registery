@@ -51,7 +51,7 @@ export function SettingsView({
       </div>
 
       {/* Account Isolation Section */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-4 vault-card-shadow">
+      <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4 shadow-2xl shadow-black/30">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
@@ -169,7 +169,7 @@ export function SettingsView({
       </div>
 
       {/* Storage Health & Maintenance */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-4 vault-card-shadow">
+      <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4 shadow-2xl shadow-black/30">
         <div className="flex items-center gap-2">
           <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm">Storage & Maintenance</h3>

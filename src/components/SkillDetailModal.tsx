@@ -169,14 +169,14 @@ function SkillDetailModalInner({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/60 dark:bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#FAF8F5] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a] rounded-2xl shadow-2xl dark:shadow-[0_0_35px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden text-[#1F1E1B] dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 flex flex-col overflow-hidden text-white transition-colors"
       >
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#E5DFD5] dark:border-[#2a2a2a] bg-[#FAF8F5]/90 dark:bg-[#111111]/60 flex items-start justify-between gap-4">
+        <div className="px-6 py-4 border-b border-white/10 bg-black/40 flex items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-1.5 text-xs text-[#645F57] dark:text-slate-400 mb-1 flex-wrap">
               <span className="font-semibold uppercase tracking-wider text-[#1F1E1B] dark:text-amber-300">
@@ -228,7 +228,7 @@ function SkillDetailModalInner({
             <button
               onClick={handleQuickTest}
               disabled={isQuickTesting}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-amber-600 dark:hover:bg-amber-500 text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-50 cursor-pointer active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-50 cursor-pointer active:scale-95"
               title="Execute simulated tool call using mock inputs and view JSON response"
             >
               <Play className={`w-3.5 h-3.5 fill-current ${isQuickTesting ? 'animate-spin' : ''}`} />
@@ -284,11 +284,7 @@ function SkillDetailModalInner({
         <div className="px-6 border-b border-[#E5DFD5] dark:border-[#2a2a2a] bg-[#FAF8F5] dark:bg-[#0a0a0a] flex gap-6 overflow-x-auto text-xs font-semibold">
           <button
             onClick={() => setActiveTab('agent')}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'agent'
-                ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
-                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
-            }`}
+            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${activeTab === 'agent' ? 'border-amber-500 text-amber-300' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <Code2 className="w-3.5 h-3.5" />
             <span>Tool Schemas</span>
@@ -296,11 +292,7 @@ function SkillDetailModalInner({
 
           <button
             onClick={() => setActiveTab('schemas')}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'schemas'
-                ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
-                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
-            }`}
+            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${activeTab === 'schemas' ? 'border-amber-500 text-amber-300' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <Layers className="w-3.5 h-3.5" />
             <span>Parameters</span>
@@ -308,11 +300,7 @@ function SkillDetailModalInner({
 
           <button
             onClick={() => setActiveTab('playground')}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'playground'
-                ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
-                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
-            }`}
+            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${activeTab === 'playground' ? 'border-amber-500 text-amber-300' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <Play className="w-3.5 h-3.5" />
             <span>Simulator</span>
@@ -320,11 +308,7 @@ function SkillDetailModalInner({
 
           <button
             onClick={() => setActiveTab('overview')}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'overview'
-                ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
-                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
-            }`}
+            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${activeTab === 'overview' ? 'border-amber-500 text-amber-300' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <Terminal className="w-3.5 h-3.5" />
             <span>Config</span>
@@ -332,11 +316,7 @@ function SkillDetailModalInner({
 
           <button
             onClick={() => setActiveTab('history')}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'history'
-                ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
-                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
-            }`}
+            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${activeTab === 'history' ? 'border-amber-500 text-amber-300' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <History className="w-3.5 h-3.5" />
             <span>Version History</span>
@@ -349,11 +329,7 @@ function SkillDetailModalInner({
 
           <button
             onClick={() => setActiveTab('raw')}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'raw'
-                ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
-                : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
-            }`}
+            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${activeTab === 'raw' ? 'border-amber-500 text-amber-300' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <FileCode className="w-3.5 h-3.5" />
             <span>Raw Spec</span>
