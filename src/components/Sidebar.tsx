@@ -97,7 +97,7 @@ export function Sidebar({
 
       {/* Sidebar Container */}
       <aside
-        className="fixed top-16 bottom-0 left-0 z-40 w-64 border-r border-white/10 bg-black/60 backdrop-blur-xl flex flex-col justify-between transition-all duration-200 lg:translate-x-0"
+        className="fixed top-16 bottom-0 left-0 z-40 w-64 border-r border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#F3EFEA] dark:bg-[#111111] backdrop-blur-xl flex flex-col justify-between transition-all duration-200 lg:translate-x-0"
       >
         <div className="p-4 space-y-6 overflow-y-auto">
           {/* Main Nav Items */}
@@ -112,7 +112,7 @@ export function Sidebar({
                 <button
                   key={item.id}
                   onClick={() => handleItemClick(item.id)}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all group outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${isActive ? 'bg-amber-500/10 text-amber-300 border border-amber-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all group outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${isActive ? 'bg-[#C15F3C]/10 text-[#C15F3C] dark:bg-amber-500/10 dark:text-amber-300 border border-[#C15F3C]/20 dark:border-amber-500/20' : 'text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-white hover:bg-[#F8F5EF] dark:hover:bg-white/5 border border-transparent'}`}
                 >
                   <div className="flex items-center gap-3">
                     <Icon
@@ -148,7 +148,7 @@ export function Sidebar({
           </div>
 
           {/* Quick Info Box */}
-          <div className="rounded-2xl p-3.5 bg-white/5 border border-white/10 text-xs shadow-sm shadow-amber-500/10">
+          <div className="rounded-2xl p-3.5 bg-[#FFFFFF] dark:bg-white/5 border border-[#E5DFD5] dark:border-white/10 text-xs shadow-sm shadow-[#C15F3C]/5 dark:shadow-amber-500/10">
             <div className="flex items-center gap-2 text-[#1F1E1B] dark:text-slate-200 font-semibold mb-1">
               <Database className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
               <span>Offline Persistence</span>
@@ -167,7 +167,7 @@ export function Sidebar({
         </div>
 
         {/* Footer Info */}
-        <div className="p-4 border-t border-white/10 bg-black/40 text-[11px] text-gray-400 flex items-center justify-between">
+        <div className="p-4 border-t border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#F3EFEA] dark:bg-black/40 text-[11px] text-[#645F57] dark:text-gray-400 flex items-center justify-between">
           <div>
             <p className="font-semibold text-[#1F1E1B] dark:text-slate-300">Agent Tool Registry</p>
             <p className="text-[10px] text-[#918B80] dark:text-slate-500 font-mono">OpenAI • Anthropic • Gemini • MCP</p>

@@ -57,12 +57,12 @@ export function Navbar({
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 h-16 border-b border-white/10 bg-white/5 backdrop-blur-xl px-4 lg:px-6 flex items-center justify-between gap-4 transition-colors duration-200">
+    <header className="sticky top-0 z-30 h-16 border-b border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FAF8F5]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl px-4 lg:px-6 flex items-center justify-between gap-4 transition-colors duration-200">
       {/* Left branding */}
       <div className="flex items-center gap-3">
         <button
           onClick={onToggleMobileSidebar}
-          className="lg:hidden p-2 text-[#645F57] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-900 rounded-lg transition-colors"
+          className="lg:hidden p-2 text-[#645F57] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-[#2a2a2a] rounded-lg transition-colors"
           aria-label="Toggle navigation"
         >
           <Menu className="w-5 h-5" />
@@ -74,7 +74,7 @@ export function Navbar({
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-base tracking-tight text-[#1F1E1B] dark:text-white">
+              <span className="font-extrabold text-base tracking-tight text-primary dark:text-white">
                 SkillRegistry
               </span>
               <span className="text-[#918B80] dark:text-slate-600 font-light">/</span>
@@ -99,7 +99,7 @@ export function Navbar({
             placeholder="Search skills by name, tag, category, or parameter..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl pl-10 pr-12 py-2 text-xs text-white placeholder-gray-500 transition-all outline-none"
+            className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#3a3a3a] hover:border-[#C15F3C] dark:hover:border-amber-500 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl pl-10 pr-12 py-2 text-xs text-[#1F1E1B] dark:text-white placeholder-[#918B80] dark:placeholder-slate-500 transition-all outline-none"
           />
           {searchQuery ? (
             <button
@@ -122,7 +122,7 @@ export function Navbar({
         {/* Export Agent Config Quick Button */}
         <button
           onClick={onExportAgentClick}
-          className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-xs font-medium transition-all shadow-sm"
+          className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] text-[#645F57] dark:text-slate-300 hover:text-[#1F1E1B] dark:hover:text-white text-xs font-medium transition-all shadow-sm"
           title="Export skills as an Agent configuration bundle"
         >
           <Download className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
@@ -132,7 +132,7 @@ export function Navbar({
         {/* Add Skill Button */}
         <button
           onClick={onAddSkillClick}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 hover:brightness-110 active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-amber-500/30 transition-all"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:via-amber-500 dark:to-orange-500 dark:hover:brightness-110 active:scale-[0.98] text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-amber-500/30 transition-all"
         >
           <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
           <span>Add Skill</span>
@@ -141,7 +141,7 @@ export function Navbar({
         {/* Theme Toggle (Claude Light / Gemini Dark Neon) */}
         <button
           onClick={onToggleTheme}
-          className="p-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-amber-300 shadow-sm shadow-amber-500/20 transition-all"
+          className="p-2 rounded-xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] text-[#C15F3C] dark:text-amber-300 shadow-sm shadow-[#C15F3C]/10 dark:shadow-amber-500/20 transition-all"
           aria-label={isDarkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}
           title={isDarkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}
         >
@@ -156,7 +156,7 @@ export function Navbar({
         <div className="relative">
           <button
             onClick={() => setShowUserDropdown(!showUserDropdown)}
-            className="flex items-center gap-2 p-1.5 pr-2.5 rounded-xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 transition-all text-left shadow-sm"
+            className="flex items-center gap-2 p-1.5 pr-2.5 rounded-xl border border-[#E5DFD5] dark:border-[#3a3a3a] hover:border-[#C15F3C] dark:hover:border-amber-500 bg-[#FFFFFF] dark:bg-[#1a1a1a] hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-all text-left shadow-sm"
             aria-expanded={showUserDropdown}
           >
             <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#C15F3C] to-[#D97706] dark:from-amber-500 dark:to-orange-400 flex items-center justify-center text-[10px] font-bold text-white uppercase shadow-sm">
