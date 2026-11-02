@@ -86,37 +86,53 @@ function MainApp() {
 
   // User State
   const [users, setUsers] = useState<User[]>([]);
-  const [currentUser, setCurrentUser] = useState<User>(() => storageService.getCurrentUser());
+  const [currentUser, setCurrentUser] = useState<User>(() => ({
+    id: '',
+    name: '',
+    email: '',
+    role: 'Developer',
+  }));
 
   // Skills State (Personal Registry)
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Load user data & skills
-  const loadUserData = () => {
-    const allUsers = storageService.getUsers();
-    const active = storageService.getCurrentUser();
-    const userSkills = storageService.getSkills(active.id);
-    setUsers(allUsers);
-    setCurrentUser(active);
-    setSkills(userSkills);
+  const loadUserData = async () => {
+    try {
+      setIsLoading(true);
+      // storageService is localStorage-backed and synchronous; await to keep the
+      // async contract so a spinner can render while data loads.
+      const allUsers = await Promise.resolve(storageService.getUsers());
+      const active = await Promise.resolve(storageService.getCurrentUser());
+      const userSkills = await Promise.resolve(storageService.getSkills(active.id));
+      setUsers(allUsers);
+      setCurrentUser(active);
+      setSkills(userSkills);
+    } catch (err) {
+      console.error('Failed to load user data:', err);
+      showToast('Load Failed', 'Could not load your registry data. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     loadUserData();
   }, []);
 
-  const handleSwitchUser = (userId: string) => {
-    const updatedUser = storageService.setCurrentUser(userId);
+  const handleSwitchUser = async (userId: string) => {
+    const updatedUser = await storageService.setCurrentUser(userId);
     setCurrentUser(updatedUser);
-    const userSkills = storageService.getSkills(userId);
+    const userSkills = await storageService.getSkills(userId);
     setSkills(userSkills);
     setSelectedSkillIds([]);
     showToast('Switched Account', `Logged into private registry for ${updatedUser.name}`);
   };
 
-  const handleCreateUser = (name: string, email: string) => {
-    const newUser = storageService.createUser(name, email);
-    loadUserData();
+  const handleCreateUser = async (name: string, email: string) => {
+    await storageService.createUser(name, email);
+    await loadUserData();
   };
 
   // Search & Filters for "My Registry"
@@ -144,50 +160,87 @@ function MainApp() {
   const [isAgentExportOpen, setIsAgentExportOpen] = useState(false);
 
   // Handlers for Registry CRUD
-  const handleSaveSkill = (saved: Skill) => {
-    storageService.saveSkill(saved);
-    setSkills(storageService.getSkills(currentUser.id));
+  const handleSaveSkill = async (saved: Skill) => {
+    try {
+      await storageService.saveSkill(saved);
+      const refreshed = await storageService.getSkills(currentUser.id);
+      setSkills(refreshed);
+    } catch (err) {
+      console.error('Failed to save skill:', err);
+      showToast('Action Failed', 'Could not save the skill. Please try again.');
+    }
   };
 
-  const handleDeleteSkill = (id: string) => {
-    storageService.deleteSkill(id, currentUser.id);
-    setSkills(storageService.getSkills(currentUser.id));
-    setSelectedSkillIds((prev) => prev.filter((i) => i !== id));
-    showToast('Skill Deleted', 'Skill removed from your registry.');
+  const handleDeleteSkill = async (id: string) => {
+    try {
+      await storageService.deleteSkill(id, currentUser.id);
+      const refreshed = await storageService.getSkills(currentUser.id);
+      setSkills(refreshed);
+      setSelectedSkillIds((prev) => prev.filter((i) => i !== id));
+      showToast('Skill Deleted', 'Skill removed from your registry.');
+    } catch (err) {
+      console.error('Failed to delete skill:', err);
+      showToast('Action Failed', 'Could not delete the skill. Please try again.');
+    }
   };
 
-  const handleDuplicateSkill = (id: string) => {
-    const duplicated = storageService.duplicateSkill(id, currentUser.id);
-    setSkills(storageService.getSkills(currentUser.id));
-    showToast('Skill Duplicated', `Created "${duplicated.name}" in drafts.`);
+  const handleDuplicateSkill = async (id: string) => {
+    try {
+      const duplicated = await storageService.duplicateSkill(id, currentUser.id);
+      const refreshed = await storageService.getSkills(currentUser.id);
+      setSkills(refreshed);
+      showToast('Skill Duplicated', `Created "${duplicated.name}" in drafts.`);
+    } catch (err) {
+      console.error('Failed to duplicate skill:', err);
+      showToast('Action Failed', 'Could not duplicate the skill. Please try again.');
+    }
   };
 
-  const handleToggleArchive = (id: string) => {
-    const updated = storageService.toggleArchiveSkill(id, currentUser.id);
-    setSkills(storageService.getSkills(currentUser.id));
-    showToast(
-      updated.status === 'deprecated' ? 'Skill Archived' : 'Skill Activated',
-      `"${updated.name}" is now ${updated.status}.`
-    );
+  const handleToggleArchive = async (id: string) => {
+    try {
+      const updated = await storageService.toggleArchiveSkill(id, currentUser.id);
+      const refreshed = await storageService.getSkills(currentUser.id);
+      setSkills(refreshed);
+      showToast(
+        updated.status === 'deprecated' ? 'Skill Archived' : 'Skill Activated',
+        `"${updated.name}" is now ${updated.status}.`
+      );
+    } catch (err) {
+      console.error('Failed to toggle archive state:', err);
+      showToast('Action Failed', 'Could not update the archive state. Please try again.');
+    }
   };
 
-  const handleResetSeed = () => {
-    storageService.resetUserSkillsToDefault(currentUser.id);
-    setSkills(storageService.getSkills(currentUser.id));
+  const handleResetSeed = async () => {
+    try {
+      await storageService.resetUserSkillsToDefault(currentUser.id);
+      const refreshed = await storageService.getSkills(currentUser.id);
+      setSkills(refreshed);
+      showToast('Registry Reset', 'Your registry has been restored to the default starter skills.');
+    } catch (err) {
+      console.error('Failed to reset registry:', err);
+      showToast('Action Failed', 'Could not reset the registry. Please try again.');
+    }
   };
 
-  const handleInstallMarketplaceSkill = (
+  const handleInstallMarketplaceSkill = async (
     mktSkill: Skill,
     customConfig: Partial<SkillConfig>
   ) => {
-    const installed = storageService.installMarketplaceSkill(
-      mktSkill,
-      customConfig,
-      currentUser.id
-    );
-    setSkills(storageService.getSkills(currentUser.id));
-    showToast('Installed to Registry', `"${installed.name}" copied to your personal registry.`);
-    setActiveTab('registry');
+    try {
+      const installed = await storageService.installMarketplaceSkill(
+        mktSkill,
+        customConfig,
+        currentUser.id
+      );
+      const refreshed = await storageService.getSkills(currentUser.id);
+      setSkills(refreshed);
+      showToast('Installed to Registry', `"${installed.name}" copied to your personal registry.`);
+      setActiveTab('registry');
+    } catch (err) {
+      console.error('Failed to install marketplace skill:', err);
+      showToast('Action Failed', 'Could not install the skill. Please try again.');
+    }
   };
 
   // Selection handlers
@@ -205,7 +258,7 @@ function MainApp() {
     }
   };
 
-  const handleUpdateSkillDependencies = (skillId: string, newDependencies: string[]) => {
+  const handleUpdateSkillDependencies = async (skillId: string, newDependencies: string[]) => {
     const target = skills.find((s) => s.id === skillId);
     if (!target) return;
     const updated: Skill = {
@@ -213,8 +266,9 @@ function MainApp() {
       dependencies: newDependencies,
       updatedAt: new Date().toISOString(),
     };
-    storageService.saveSkill(updated);
-    setSkills(storageService.getSkills(currentUser.id));
+    await storageService.saveSkill(updated);
+    const refreshed = await storageService.getSkills(currentUser.id);
+    setSkills(refreshed);
     showToast('Dependencies Updated', `Updated dependency links for "${target.name}".`);
   };
 
@@ -283,9 +337,10 @@ function MainApp() {
     });
   }, [mktSearch, mktSource, mktCategory]);
 
-  const handleRevertVersion = (skillId: string, versionId: string) => {
-    const reverted = storageService.revertSkillVersion(skillId, versionId, currentUser.id);
-    setSkills(storageService.getSkills(currentUser.id));
+  const handleRevertVersion = async (skillId: string, versionId: string) => {
+    const reverted = await storageService.revertSkillVersion(skillId, versionId, currentUser.id);
+    const refreshed = await storageService.getSkills(currentUser.id);
+    setSkills(refreshed);
     setDetailSkill(reverted);
     showToast('Version Reverted', `Reverted "${reverted.name}" to version ${reverted.version}.`);
   };
@@ -324,8 +379,14 @@ function MainApp() {
 
         {/* Main Content Area */}
         <main className="ml-0 lg:ml-64 pt-16 flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full transition-all">
+          {isLoading && (
+            <div className="flex flex-col items-center justify-center py-24 space-y-4" role="status" aria-live="polite">
+              <div className="w-10 h-10 rounded-full border-4 border-[#E5DFD5] dark:border-indigo-500/25 border-t-[#C15F3C] dark:border-t-cyan-400 animate-spin" />
+              <p className="text-xs font-medium text-[#645F57] dark:text-slate-400">Loading your registry…</p>
+            </div>
+          )}
           {/* TAB 1: MY REGISTRY */}
-          {activeTab === 'registry' && (
+          {activeTab === 'registry' && !isLoading && (
             <div className="space-y-6">
               {/* Header Title & Quick Count */}
               <div className="flex items-center justify-between flex-wrap gap-4">

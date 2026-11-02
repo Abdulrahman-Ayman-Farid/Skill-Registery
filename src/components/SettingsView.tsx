@@ -35,11 +35,11 @@ export function SettingsView({
   const [newUserEmail, setNewUserEmail] = useState('');
   const [showAddUser, setShowAddUser] = useState(false);
 
-  const handleCreateUserSubmit = (e: React.FormEvent) => {
+  const handleCreateUserSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newUserName.trim() || !newUserEmail.trim()) return;
 
-    onCreateUser(newUserName, newUserEmail);
+    await onCreateUser(newUserName, newUserEmail);
     showToast('User Created', `Created and switched to account for ${newUserName}`);
     setNewUserName('');
     setNewUserEmail('');

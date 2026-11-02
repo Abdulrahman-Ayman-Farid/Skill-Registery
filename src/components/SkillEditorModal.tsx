@@ -61,6 +61,7 @@ export function SkillEditorModal({
     initialSkill?.versionHistory || []
   );
   const [revertBanner, setRevertBanner] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   // Form State
   const [name, setName] = useState(initialSkill?.name || '');
@@ -312,7 +313,7 @@ export function SkillEditorModal({
   };
 
   // Save handler
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
 
     let candidateSkill: Skill;
@@ -376,12 +377,17 @@ export function SkillEditorModal({
       return;
     }
 
-    onSave(candidateSkill);
-    showToast(
-      isEditing ? 'Skill Updated' : 'Skill Created',
-      `"${candidateSkill.name}" saved to personal registry.`
-    );
-    onClose();
+    setIsSaving(true);
+    try {
+      await onSave(candidateSkill);
+      showToast(
+        isEditing ? 'Skill Updated' : 'Skill Created',
+        `"${candidateSkill.name}" saved to personal registry.`
+      );
+      onClose();
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -870,9 +876,10 @@ export function SkillEditorModal({
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 active:scale-[0.98] text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all"
+              disabled={isSaving}
+              className="px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 active:scale-[0.98] text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isEditing ? 'Save Changes' : 'Create Skill'}
+              {isSaving ? 'Saving...' : isEditing ? 'Save Changes' : 'Create Skill'}
             </button>
           </div>
         </form>

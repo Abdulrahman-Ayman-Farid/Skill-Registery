@@ -75,7 +75,7 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
     reader.readAsText(file);
   };
 
-  const handleProcessImport = () => {
+  const handleProcessImport = async () => {
     setImportValidationErrors([]);
     setImportSuccessMessage(null);
 
@@ -106,8 +106,8 @@ export function ImportExportView({ skills, userId, onRefreshSkills }: ImportExpo
       return;
     }
 
-    const { importedCount, errors } = storageService.importSkills(itemsToImport, userId);
-    onRefreshSkills();
+    const { importedCount, errors } = await storageService.importSkills(itemsToImport, userId);
+    await onRefreshSkills();
 
     if (errors.length > 0) {
       setImportValidationErrors(errors);
