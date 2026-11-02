@@ -44,7 +44,7 @@ const CATEGORY_META: Record<
   'Developer Tools': {
     icon: Wrench,
     description: 'Code execution sandboxes, GitHub integration, shell utilities, and HTTP API callers.',
-    colorClass: 'bg-[#C15F3C]/15 text-[#C15F3C] dark:bg-cyan-500/15 dark:text-cyan-300',
+    colorClass: 'bg-[#C15F3C]/15 text-[#C15F3C] dark:bg-amber-500/15 dark:text-amber-300',
   },
   Vision: {
     icon: Eye,
@@ -87,7 +87,7 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
               key={category}
               type="button"
               onClick={() => onSelectCategoryFilter(category)}
-              className="text-left rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-5 vault-card-shadow transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-[#C15F3C] dark:focus-visible:ring-cyan-500 flex flex-col justify-between group hover:border-[#C15F3C]/40 dark:hover:border-cyan-400/50"
+              className="text-left rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-5 vault-card-shadow transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-[#C15F3C] dark:focus-visible:ring-amber-500 flex flex-col justify-between group hover:border-[#C15F3C]/40 dark:hover:border-amber-400/50"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -99,7 +99,7 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
                   </span>
                 </div>
 
-                <h3 className="font-bold text-[#1F1E1B] group-hover:text-[#C15F3C] dark:text-slate-100 dark:group-hover:text-cyan-300 text-sm transition-colors">
+                <h3 className="font-bold text-[#1F1E1B] group-hover:text-[#C15F3C] dark:text-slate-100 dark:group-hover:text-amber-300 text-sm transition-colors">
                   {category}
                 </h3>
                 <p className="text-xs text-[#645F57] dark:text-slate-400 mt-1 leading-relaxed line-clamp-2">
@@ -107,11 +107,11 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#EFEAE2] dark:border-indigo-500/20 flex items-center justify-between text-xs text-[#645F57] dark:text-slate-400 w-full">
+              <div className="pt-4 mt-4 border-t border-[#EFEAE2] dark:border-[#2a2a2a] flex items-center justify-between text-xs text-[#645F57] dark:text-slate-400 w-full">
                 <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
                   {activeCount} active
                 </span>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C15F3C] dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform">
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C15F3C] dark:text-amber-400 group-hover:translate-x-0.5 transition-transform">
                   <span>Browse skills</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>

@@ -49,17 +49,17 @@ export function SkillTable({
   };
 
   return (
-    <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] backdrop-blur-md overflow-hidden vault-card-shadow">
+    <div className="rounded-2xl border border-[#E5DFD5] dark:border-amber-500/25 bg-[#FFFFFF] dark:bg-[#1a1a1a] backdrop-blur-md overflow-hidden vault-card-shadow">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-[#E5DFD5] dark:border-indigo-500/20 bg-[#F8F5EF] dark:bg-[#070A13]/90 text-[#645F57] dark:text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
+            <tr className="border-b border-[#E5DFD5] dark:border-amber-500/20 bg-[#F8F5EF] dark:bg-[#0a0a0a] text-[#645F57] dark:text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
               <th className="py-3.5 pl-4 pr-2 w-10">
                 <input
                   type="checkbox"
                   checked={allSelected}
                   onChange={onSelectAll}
-                  className="w-4 h-4 rounded border-[#D5CFC5] dark:border-slate-700 bg-white dark:bg-slate-950 text-[#C15F3C] dark:text-cyan-400 focus:ring-[#C15F3C] dark:focus:ring-cyan-500 cursor-pointer"
+                  className="w-4 h-4 rounded border-[#D5CFC5] dark:border-[#3a3a3a] bg-white dark:bg-[#0a0a0a] text-[#C15F3C] dark:text-amber-400 focus:ring-[#C15F3C] dark:focus:ring-amber-500 cursor-pointer"
                   title="Select all"
                 />
               </th>
@@ -73,7 +73,7 @@ export function SkillTable({
               <th className="py-3.5 pr-4 pl-3 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#EFEAE2] dark:divide-slate-800/60">
+          <tbody className="divide-y divide-[#EFEAE2] dark:divide-[#2a2a2a]">
             {skills.map((skill) => {
               const isSelected = selectedIds.includes(skill.id);
               return (
@@ -81,7 +81,7 @@ export function SkillTable({
                   key={skill.id}
                   onClick={() => onViewDetails(skill)}
                   className={`hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors cursor-pointer ${
-                    isSelected ? 'bg-[#FAF8F5] dark:bg-indigo-950/25' : ''
+                    isSelected ? 'bg-[#FAF8F5] dark:bg-amber-950/25' : ''
                   }`}
                 >
                   <td className="py-3 pl-4 pr-2" onClick={(e) => e.stopPropagation()}>
@@ -89,11 +89,11 @@ export function SkillTable({
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => onToggleSelect(skill.id)}
-                      className="w-4 h-4 rounded border-[#D5CFC5] dark:border-slate-700 bg-white dark:bg-slate-950 text-[#C15F3C] dark:text-cyan-400 focus:ring-[#C15F3C] dark:focus:ring-cyan-500 cursor-pointer"
+                      className="w-4 h-4 rounded border-[#D5CFC5] dark:border-[#3a3a3a] bg-white dark:bg-[#0a0a0a] text-[#C15F3C] dark:text-amber-400 focus:ring-[#C15F3C] dark:focus:ring-amber-500 cursor-pointer"
                     />
                   </td>
                   <td className="py-3 px-3">
-                    <div className="font-semibold text-[#1F1E1B] dark:text-slate-200 text-xs hover:text-[#C15F3C] dark:hover:text-cyan-300 transition-colors">
+                    <div className="font-semibold text-[#1F1E1B] dark:text-slate-200 text-xs hover:text-[#C15F3C] dark:hover:text-amber-300 transition-colors">
                       {skill.name}
                     </div>
                     <div className="text-[11px] text-[#645F57] dark:text-slate-400 line-clamp-1 max-w-xs">
@@ -140,28 +140,28 @@ export function SkillTable({
                     <div className="flex items-center justify-end gap-1">
                       <button
                         onClick={(e) => handleCopySchema(e, skill)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#C15F3C] dark:text-slate-400 dark:hover:text-cyan-300 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#C15F3C] dark:text-slate-400 dark:hover:text-amber-300 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
                         title="Copy Tool Schema"
                       >
                         <Code2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onEdit(skill)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
                         title="Edit Skill"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onDuplicate(skill.id)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
                         title="Duplicate Skill"
                       >
                         <CopyPlus className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onToggleArchive(skill.id)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors"
+                        className="p-1.5 rounded-lg text-[#918B80] hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
                         title={skill.status === 'deprecated' ? 'Unarchive' : 'Archive'}
                       >
                         <Archive className="w-4 h-4" />
