@@ -56,11 +56,11 @@
     --color-gemini-neon-glow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 35px rgba(6, 182, 212, 0.2);
 
     /* Glassmorphism theme */
-    --glass-bg: rgba(139, 92, 246, 0.12);
-    --glass-bg-strong: rgba(139, 92, 246, 0.20);
+    --glass-bg: rgba(245, 158, 11, 0.10);
+    --glass-bg-strong: rgba(245, 158, 11, 0.18);
     --glass-border: rgba(255, 255, 255, 0.15);
     --glass-blur: 24px;
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(245, 158, 11, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
   .dark {
@@ -190,5 +190,5 @@
 @layer utilities {
   .glass { background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
   .glass-strong { background: var(--glass-bg-strong); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid rgba(255, 255, 255, 0.20); box-shadow: var(--glass-shadow); }
-  .glass-glow { filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.4)); }
+  .glass-glow { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.4)); }
 }
