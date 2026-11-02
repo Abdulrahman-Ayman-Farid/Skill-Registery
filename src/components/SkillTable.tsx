@@ -49,11 +49,11 @@ export function SkillTable({
   };
 
   return (
-    <div className="rounded-2xl border border-[#E5DFD5] dark:border-amber-500/25 bg-[#FFFFFF] dark:bg-[#1a1a1a] backdrop-blur-md overflow-hidden vault-card-shadow">
+    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-2xl shadow-black/30">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-[#E5DFD5] dark:border-amber-500/20 bg-[#F8F5EF] dark:bg-[#0a0a0a] text-[#645F57] dark:text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
+            <tr className="border-b border-white/10 bg-black/40 text-gray-400 font-semibold uppercase tracking-wider text-[10px]">
               <th className="py-3.5 pl-4 pr-2 w-10">
                 <input
                   type="checkbox"
@@ -73,16 +73,14 @@ export function SkillTable({
               <th className="py-3.5 pr-4 pl-3 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#EFEAE2] dark:divide-[#2a2a2a]">
+          <tbody className="divide-y divide-white/5">
             {skills.map((skill) => {
               const isSelected = selectedIds.includes(skill.id);
               return (
                 <tr
                   key={skill.id}
                   onClick={() => onViewDetails(skill)}
-                  className={`hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] transition-colors cursor-pointer ${
-                    isSelected ? 'bg-[#FAF8F5] dark:bg-amber-950/25' : ''
-                  }`}
+                  className={`hover:bg-white/5 transition-colors cursor-pointer ${isSelected ? 'bg-amber-500/10' : ''}`}
                 >
                   <td className="py-3 pl-4 pr-2" onClick={(e) => e.stopPropagation()}>
                     <input
@@ -93,7 +91,7 @@ export function SkillTable({
                     />
                   </td>
                   <td className="py-3 px-3">
-                    <div className="font-semibold text-[#1F1E1B] dark:text-slate-200 text-xs hover:text-[#C15F3C] dark:hover:text-amber-300 transition-colors">
+                    <div className="font-semibold text-white text-xs hover:text-amber-300 transition-colors">
                       {skill.name}
                     </div>
                     <div className="text-[11px] text-[#645F57] dark:text-slate-400 line-clamp-1 max-w-xs">
@@ -140,28 +138,28 @@ export function SkillTable({
                     <div className="flex items-center justify-end gap-1">
                       <button
                         onClick={(e) => handleCopySchema(e, skill)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#C15F3C] dark:text-slate-400 dark:hover:text-amber-300 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-amber-300 hover:bg-white/10 transition-colors"
                         title="Copy Tool Schema"
                       >
                         <Code2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onEdit(skill)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-amber-300 hover:bg-white/10 transition-colors"
                         title="Edit Skill"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onDuplicate(skill.id)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-[#1F1E1B] dark:text-slate-400 dark:hover:text-slate-200 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-amber-300 hover:bg-white/10 transition-colors"
                         title="Duplicate Skill"
                       >
                         <CopyPlus className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onToggleArchive(skill.id)}
-                        className="p-1.5 rounded-lg text-[#918B80] hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400 hover:bg-[#F3EFEA] dark:hover:bg-[#2a2a2a] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-amber-300 hover:bg-white/10 transition-colors"
                         title={skill.status === 'deprecated' ? 'Unarchive' : 'Archive'}
                       >
                         <Archive className="w-4 h-4" />

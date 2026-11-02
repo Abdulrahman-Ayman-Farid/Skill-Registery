@@ -87,7 +87,7 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
               key={category}
               type="button"
               onClick={() => onSelectCategoryFilter(category)}
-              className="text-left rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-5 vault-card-shadow transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-[#C15F3C] dark:focus-visible:ring-amber-500 flex flex-col justify-between group hover:border-[#C15F3C]/40 dark:hover:border-amber-400/50"
+              className="text-left rounded-2xl border border-white/10 bg-white/5 p-5 transition-all hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-amber-500 flex flex-col justify-between group hover:border-amber-500/30 hover:shadow-amber-500/20"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -99,15 +99,15 @@ export function CategoriesView({ skills, onSelectCategoryFilter }: CategoriesVie
                   </span>
                 </div>
 
-                <h3 className="font-bold text-[#1F1E1B] group-hover:text-[#C15F3C] dark:text-slate-100 dark:group-hover:text-amber-300 text-sm transition-colors">
+                <h3 className="font-bold text-white group-hover:text-amber-300 text-sm transition-colors">
                   {category}
                 </h3>
-                <p className="text-xs text-[#645F57] dark:text-slate-400 mt-1 leading-relaxed line-clamp-2">
+                <p className="text-xs text-gray-400 mt-1 leading-relaxed line-clamp-2">
                   {meta.description}
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#EFEAE2] dark:border-[#2a2a2a] flex items-center justify-between text-xs text-[#645F57] dark:text-slate-400 w-full">
+              <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400 w-full">
                 <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
                   {activeCount} active
                 </span>
