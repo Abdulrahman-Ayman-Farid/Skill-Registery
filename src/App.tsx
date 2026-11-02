@@ -365,7 +365,7 @@ function MainApp() {
         />
 
         {/* Main Content Area */}
-        <main className="ml-0 lg:ml-64 pt-16 flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full transition-all">
+        <main className="ml-0 lg:ml-64 pt-16 flex-1 overflow-y-auto p-4 lg:p-6 bg-transparent transition-all">
           {isLoading && (
             <div className="flex flex-col items-center justify-center py-24 space-y-4" role="status" aria-live="polite">
               <div className="w-10 h-10 rounded-full border-4 border-[#E5DFD5] dark:border-amber-500/25 border-t-[#C15F3C] dark:border-t-amber-400 animate-spin" />
