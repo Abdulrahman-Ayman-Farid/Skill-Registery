@@ -100,7 +100,7 @@ export function Navbar({
             placeholder="Search skills by name, tag, category, or parameter..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full bg-[#F3EFEA] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/30 hover:border-[#D5CFC5] dark:hover:border-indigo-500/50 focus:border-[#C15F3C] dark:focus:border-cyan-400 focus:ring-2 focus:ring-[#C15F3C]/20 dark:focus:ring-cyan-500/20 rounded-xl pl-10 pr-12 py-2 text-xs text-[#1F1E1B] dark:text-slate-200 placeholder-[#918B80] dark:placeholder-slate-500 transition-all outline-none"
+            className="w-full bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 hover:border-[#D5CFC5] dark:hover:border-indigo-500/50 focus:border-[#C15F3C] dark:focus:border-cyan-400 focus:ring-2 focus:ring-[#C15F3C]/20 dark:focus:ring-cyan-500/20 rounded-xl pl-10 pr-12 py-2 text-xs text-[#1F1E1B] dark:text-slate-200 placeholder-[#918B80] dark:placeholder-slate-500 transition-all outline-none"
           />
           {searchQuery ? (
             <button
@@ -123,7 +123,7 @@ export function Navbar({
         {/* Export Agent Config Quick Button */}
         <button
           onClick={onExportAgentClick}
-          className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E5DFD5] dark:border-indigo-500/30 bg-[#FFFFFF] dark:bg-[#0D1424]/80 hover:bg-[#F3EFEA] dark:hover:bg-[#111B30] text-[#3D3B39] dark:text-slate-300 hover:text-[#1F1E1B] dark:hover:text-white text-xs font-medium transition-all shadow-sm"
+          className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E5DFD5] dark:border-indigo-500/30 bg-[#FFFFFF] dark:bg-[#0D1424]/80 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-white text-xs font-medium transition-all shadow-sm"
           title="Export skills as an Agent configuration bundle"
         >
           <Download className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
@@ -142,7 +142,7 @@ export function Navbar({
         {/* Theme Toggle (Claude Light / Gemini Dark Neon) */}
         <button
           onClick={onToggleTheme}
-          className="p-2 rounded-xl border border-[#E5DFD5] dark:border-indigo-500/30 bg-[#FFFFFF] dark:bg-[#0D1424] hover:bg-[#F3EFEA] dark:hover:bg-[#111B30] text-[#C15F3C] dark:text-cyan-300 shadow-sm dark:shadow-[0_0_15px_rgba(6,182,212,0.25)] transition-all"
+          className="p-2 rounded-xl border border-[#E5DFD5] dark:border-indigo-500/30 bg-[#FFFFFF] dark:bg-[#0D1424] hover:bg-[#F3EFEA] dark:hover:bg-slate-800 text-[#C15F3C] dark:text-cyan-300 shadow-sm dark:shadow-[0_0_15px_rgba(6,182,212,0.25)] transition-all"
           aria-label={isDarkMode ? 'Switch to Claude Light mode' : 'Switch to Gemini Dark mode'}
           title={isDarkMode ? 'Switch to Claude Light mode' : 'Switch to Gemini Dark mode'}
         >
@@ -157,7 +157,7 @@ export function Navbar({
         <div className="relative">
           <button
             onClick={() => setShowUserDropdown(!showUserDropdown)}
-            className="flex items-center gap-2 p-1.5 pr-2.5 rounded-xl border border-[#E5DFD5] dark:border-indigo-500/30 hover:border-[#D5CFC5] dark:hover:border-cyan-500/50 bg-[#FFFFFF] dark:bg-[#0D1424]/90 hover:bg-[#F3EFEA] dark:hover:bg-[#111B30] transition-all text-left shadow-sm"
+            className="flex items-center gap-2 p-1.5 pr-2.5 rounded-xl border border-[#E5DFD5] dark:border-indigo-500/30 hover:border-[#D5CFC5] dark:hover:border-cyan-500/50 bg-[#FFFFFF] dark:bg-[#0D1424]/90 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-all text-left shadow-sm"
             aria-expanded={showUserDropdown}
           >
             <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#C15F3C] to-[#D97706] dark:from-indigo-500 dark:to-cyan-400 flex items-center justify-center text-[10px] font-bold text-white uppercase shadow-sm">
@@ -211,7 +211,7 @@ export function Navbar({
                       className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left transition-colors ${
                         u.id === currentUser.id
                           ? 'bg-[#C15F3C]/10 dark:bg-indigo-600/15 text-[#C15F3C] dark:text-cyan-300 font-semibold border border-[#C15F3C]/25 dark:border-indigo-500/30'
-                          : 'hover:bg-[#F3EFEA] dark:hover:bg-slate-900 text-[#3D3B39] dark:text-slate-300'
+                          : 'hover:bg-[#F3EFEA] dark:hover:bg-slate-800 text-[#645F57] dark:text-slate-400'
                       }`}
                     >
                       <div className="flex items-center gap-2 min-w-0">
@@ -238,7 +238,7 @@ export function Navbar({
                       setShowUserDropdown(false);
                       onCreateUserClick();
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[#3D3B39] dark:text-slate-300 hover:text-[#C15F3C] dark:hover:text-cyan-300 hover:bg-[#F3EFEA] dark:hover:bg-slate-900 transition-colors text-xs font-medium"
+                    className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[#645F57] dark:text-slate-400 hover:text-[#C15F3C] dark:hover:text-cyan-300 hover:bg-[#F3EFEA] dark:hover:bg-slate-800 transition-colors text-xs font-medium"
                   >
                     <Plus className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
                     <span>Create new isolated account</span>

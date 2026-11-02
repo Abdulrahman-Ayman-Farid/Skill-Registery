@@ -323,7 +323,7 @@ function MainApp() {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 lg:pl-64 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full transition-all">
+        <main className="ml-0 lg:ml-64 pt-16 flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full transition-all">
           {/* TAB 1: MY REGISTRY */}
           {activeTab === 'registry' && (
             <div className="space-y-6">
