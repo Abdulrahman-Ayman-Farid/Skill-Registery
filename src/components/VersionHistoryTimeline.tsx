@@ -66,7 +66,7 @@ export function VersionHistoryTimeline({
       <div className="flex items-center justify-between">
         <div>
           <h3 className="font-bold text-[#1F1E1B] dark:text-slate-200 text-sm flex items-center gap-2">
-            <History className="w-4 h-4 text-[#C15F3C] dark:text-cyan-400" />
+            <History className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
             <span>Version History Timeline</span>
           </h3>
           <p className="text-[#645F57] dark:text-slate-400 text-xs mt-0.5">
@@ -94,16 +94,16 @@ export function VersionHistoryTimeline({
                 onClick={() => setSelectedSnapshotId(snapshot.versionId)}
                 aria-label={`Snapshot v${snapshot.version}: ${snapshot.changeSummary}`}
                 aria-pressed={isSelected}
-                className={`relative w-full text-left p-3.5 rounded-2xl border transition-all outline-none focus-visible:ring-2 focus-visible:ring-[#C15F3C] dark:focus-visible:ring-cyan-500 ${
+                className={`relative w-full text-left p-3.5 rounded-2xl border transition-all outline-none focus-visible:ring-2 focus-visible:ring-[#C15F3C] dark:focus-visible:ring-amber-500 ${
                   isSelected
-                    ? 'border-[#C15F3C] bg-[#FAF8F5] ring-2 ring-[#C15F3C]/20 dark:border-cyan-400 dark:bg-indigo-950/30 dark:ring-2 dark:ring-cyan-500/30'
-                    : 'border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] hover:border-[#C15F3C]/40 dark:hover:border-cyan-400/50 claude-card-shadow'
+                    ? 'border-[#C15F3C] bg-[#FAF8F5] ring-2 ring-[#C15F3C]/20 dark:border-amber-400 dark:bg-amber-950/30 dark:ring-2 dark:ring-amber-500/30'
+                    : 'border-[#E5DFD5] dark:border-amber-500/25 bg-[#FFFFFF] dark:bg-[#1a1a1a] hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] hover:border-[#C15F3C]/40 dark:hover:border-amber-400/50 claude-card-shadow'
                 }`}
               >
                 {/* Timeline connector visual */}
                 <div className="flex items-start justify-between gap-2 mb-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-[#C15F3C]/10 text-[#C15F3C] border border-[#C15F3C]/25 dark:bg-indigo-500/15 dark:text-cyan-300 dark:border-indigo-500/30">
+                    <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-[#C15F3C]/10 text-[#C15F3C] border border-[#C15F3C]/25 dark:bg-amber-500/15 dark:text-amber-300 dark:border-[#3a3a3a]">
                       v{snapshot.version}
                     </span>
 
@@ -148,13 +148,13 @@ export function VersionHistoryTimeline({
         </div>
 
         {/* Right: Snapshot Detail & Comparison */}
-        <div className="lg:col-span-7 rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-5 space-y-4 claude-card-shadow dark:shadow-[0_0_25px_rgba(0,0,0,0.5)]">
+        <div className="lg:col-span-7 rounded-2xl border border-[#E5DFD5] dark:border-amber-500/25 bg-[#FFFFFF] dark:bg-[#1a1a1a] p-5 space-y-4 claude-card-shadow dark:shadow-[0_0_25px_rgba(0,0,0,0.5)]">
           {selectedSnapshot ? (
             <>
               <div className="flex items-center justify-between pb-3 border-b border-[#EFEAE2] dark:border-slate-800/80 flex-wrap gap-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-[#C15F3C] dark:text-cyan-300 text-sm">
+                    <span className="font-mono font-bold text-[#C15F3C] dark:text-amber-300 text-sm">
                       Snapshot: v{selectedSnapshot.version}
                     </span>
                     <span className="text-xs text-[#918B80] dark:text-slate-400">
@@ -189,7 +189,7 @@ export function VersionHistoryTimeline({
                 ) : (
                   <button
                     onClick={() => setConfirmRevertId(selectedSnapshot.versionId)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-indigo-600 dark:via-indigo-500 dark:to-cyan-500 text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:via-amber-500 dark:to-orange-500 text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Revert to this Version</span>
@@ -198,7 +198,7 @@ export function VersionHistoryTimeline({
               </div>
 
               {/* Summary note */}
-              <div className="p-3 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-slate-800">
+              <div className="p-3 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-slate-800">
                 <span className="text-[10px] font-semibold text-[#918B80] dark:text-slate-400 uppercase tracking-wider block mb-1">
                   Change Note:
                 </span>
@@ -208,7 +208,7 @@ export function VersionHistoryTimeline({
               {/* Differences compared to current state */}
               <div>
                 <h4 className="font-bold text-[#1F1E1B] dark:text-slate-300 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <GitCommit className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+                  <GitCommit className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
                   <span>Changes between this Snapshot and Current State</span>
                 </h4>
 
@@ -218,10 +218,10 @@ export function VersionHistoryTimeline({
                     <span>This snapshot matches the current editor definition.</span>
                   </div>
                 ) : (
-                  <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-slate-800 space-y-1.5">
+                  <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-slate-800 space-y-1.5">
                     {diffs.map((diff, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs text-[#1F1E1B] dark:text-slate-300 font-mono">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C15F3C] dark:bg-cyan-400 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C15F3C] dark:bg-amber-400 shrink-0" />
                         <span>{diff}</span>
                       </div>
                     ))}
@@ -232,7 +232,7 @@ export function VersionHistoryTimeline({
               {/* Snapshot Parameters overview */}
               <div>
                 <h4 className="font-bold text-[#1F1E1B] dark:text-slate-300 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-[#C15F3C] dark:text-cyan-400" />
+                  <Layers className="w-3.5 h-3.5 text-[#C15F3C] dark:text-amber-400" />
                   <span>Parameters in v{selectedSnapshot.version} ({selectedSnapshot.skillState.inputSchema?.length || 0})</span>
                 </h4>
 
@@ -240,10 +240,10 @@ export function VersionHistoryTimeline({
                   {selectedSnapshot.skillState.inputSchema?.map((p) => (
                     <div
                       key={p.name}
-                      className="p-2 rounded-lg bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-slate-800 flex items-center justify-between text-xs"
+                      className="p-2 rounded-lg bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-slate-800 flex items-center justify-between text-xs"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[#C15F3C] dark:text-cyan-300 font-semibold">{p.name}</span>
+                        <span className="font-mono text-[#C15F3C] dark:text-amber-300 font-semibold">{p.name}</span>
                         <span className="font-mono text-[10px] text-[#645F57] dark:text-slate-400">({p.type})</span>
                         {p.required && (
                           <span className="text-[9px] px-1.5 py-0.2 rounded bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-500/15 dark:text-rose-300 dark:border-rose-500/30">
@@ -258,7 +258,7 @@ export function VersionHistoryTimeline({
               </div>
 
               {/* Snapshot Configuration */}
-              <div className="p-3 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-slate-800 text-[11px] text-[#645F57] dark:text-slate-400 grid grid-cols-2 gap-2 font-mono">
+              <div className="p-3 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-slate-800 text-[11px] text-[#645F57] dark:text-slate-400 grid grid-cols-2 gap-2 font-mono">
                 <div>
                   <span className="text-[#918B80] dark:text-slate-500">Execution: </span>
                   <span className="text-[#1F1E1B] dark:text-slate-200 font-semibold">{selectedSnapshot.skillState.executionType}</span>

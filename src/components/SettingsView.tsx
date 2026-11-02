@@ -51,16 +51,16 @@ export function SettingsView({
       </div>
 
       {/* Account Isolation Section */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 vault-card-shadow">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-4 vault-card-shadow">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Users className="w-4 h-4 text-[#C15F3C] dark:text-cyan-400" />
+            <Users className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
             <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm">Per-User Data Isolation</h3>
           </div>
 
           <button
             onClick={() => setShowAddUser(!showAddUser)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-slate-800 dark:hover:bg-slate-700 text-[#1F1E1B] dark:text-slate-200 text-xs font-semibold border border-[#E5DFD5] dark:border-slate-700 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-[#1f1f1f] dark:hover:bg-[#2a2a2a] text-[#1F1E1B] dark:text-slate-200 text-xs font-semibold border border-[#E5DFD5] dark:border-[#3a3a3a] transition-colors"
           >
             <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Add Account</span>
@@ -74,7 +74,7 @@ export function SettingsView({
         {showAddUser && (
           <form
             onSubmit={handleCreateUserSubmit}
-            className="p-4 rounded-xl border border-[#C15F3C]/30 dark:border-cyan-500/30 bg-[#F8F5EF] dark:bg-slate-950/80 space-y-3"
+            className="p-4 rounded-xl border border-[#C15F3C]/30 dark:border-amber-500/30 bg-[#F8F5EF] dark:bg-[#0a0a0a]/80 space-y-3"
           >
             <h4 className="font-bold text-[#1F1E1B] dark:text-slate-200 text-xs">Register New Account</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -86,7 +86,7 @@ export function SettingsView({
                   placeholder="e.g. Sarah Connor"
                   value={newUserName}
                   onChange={(e) => setNewUserName(e.target.value)}
-                  className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 mt-1"
+                  className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#2a2a2a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-400 mt-1"
                 />
               </div>
 
@@ -98,7 +98,7 @@ export function SettingsView({
                   placeholder="sarah@example.ai"
                   value={newUserEmail}
                   onChange={(e) => setNewUserEmail(e.target.value)}
-                  className="w-full bg-[#FFFFFF] dark:bg-[#0D1424] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-cyan-400 mt-1"
+                  className="w-full bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-[#E5DFD5] dark:border-[#2a2a2a] rounded-xl px-3 py-2 text-xs text-[#1F1E1B] dark:text-slate-100 focus:ring-2 focus:ring-[#C15F3C] dark:focus:ring-amber-400 mt-1"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@ export function SettingsView({
               </button>
               <button
                 type="submit"
-                className="px-4 py-1.5 rounded-lg bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-600 text-white font-semibold text-xs shadow-md shadow-[#C15F3C]/20"
+                className="px-4 py-1.5 rounded-lg bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white font-semibold text-xs shadow-md shadow-[#C15F3C]/20"
               >
                 Create Account
               </button>
@@ -128,14 +128,14 @@ export function SettingsView({
             return (
               <div
                 key={u.id}
-                className={`p-3.5 rounded-xl border flex items-center justify-between transition-colors hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] ${
+                className={`p-3.5 rounded-xl border flex items-center justify-between transition-colors hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] ${
                   isCurrent
-                    ? 'border-[#C15F3C]/40 bg-[#FAF8F5] dark:border-cyan-500/40 dark:bg-indigo-950/20 text-[#1F1E1B] dark:text-slate-100'
-                    : 'border-[#E5DFD5] dark:border-slate-800/80 bg-[#FFFFFF] dark:bg-slate-950/40 text-[#645F57] dark:text-slate-400'
+                    ? 'border-[#C15F3C]/40 bg-[#FAF8F5] dark:border-amber-500/40 dark:bg-amber-950/20 text-[#1F1E1B] dark:text-slate-100'
+                    : 'border-[#E5DFD5] dark:border-[#2a2a2a] bg-[#FFFFFF] dark:bg-[#0a0a0a]/40 text-[#645F57] dark:text-slate-400'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#C15F3C]/10 text-[#C15F3C] dark:bg-indigo-600/30 dark:text-cyan-300 flex items-center justify-center font-bold text-xs">
+                  <div className="w-8 h-8 rounded-lg bg-[#C15F3C]/10 text-[#C15F3C] dark:bg-amber-600/30 dark:text-amber-300 flex items-center justify-center font-bold text-xs">
                     {u.name.charAt(0)}
                   </div>
                   <div>
@@ -157,7 +157,7 @@ export function SettingsView({
                       onSwitchUser(u.id);
                       showToast('Switched Account', `Logged in as ${u.name}`);
                     }}
-                    className="px-3 py-1 rounded-lg bg-[#F3EFEA] hover:bg-[#C15F3C] hover:text-white dark:bg-slate-800 dark:hover:bg-cyan-600 dark:hover:text-white text-[#3D3B39] dark:text-slate-300 text-xs font-medium transition-colors"
+                    className="px-3 py-1 rounded-lg bg-[#F3EFEA] hover:bg-[#C15F3C] hover:text-white dark:bg-[#1f1f1f] dark:hover:bg-amber-600 dark:hover:text-white text-[#3D3B39] dark:text-slate-300 text-xs font-medium transition-colors"
                   >
                     Switch to this account
                   </button>
@@ -169,30 +169,30 @@ export function SettingsView({
       </div>
 
       {/* Storage Health & Maintenance */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 vault-card-shadow">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-4 vault-card-shadow">
         <div className="flex items-center gap-2">
           <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm">Storage & Maintenance</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/30">
+          <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a]">
             <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Personal Skills</p>
             <p className="font-mono text-lg font-bold text-[#1F1E1B] dark:text-slate-100 mt-1">{totalSkills}</p>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/30">
+          <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a]">
             <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Storage Engine</p>
             <p className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400 mt-1">Indexed / LocalStorage</p>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] border border-[#E5DFD5] dark:border-indigo-500/30">
+          <div className="p-3.5 rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] border border-[#E5DFD5] dark:border-[#3a3a3a]">
             <p className="text-[#645F57] dark:text-slate-400 text-[11px]">Seed Status</p>
             <p className="font-mono text-xs font-semibold text-[#1F1E1B] dark:text-slate-200 mt-1">12 Production Starters</p>
           </div>
         </div>
 
-        <div className="pt-3 border-t border-[#EFEAE2] dark:border-slate-800/80 flex items-center justify-between">
+        <div className="pt-3 border-t border-[#EFEAE2] dark:border-[#2a2a2a] flex items-center justify-between">
           <div>
             <p className="font-semibold text-[#1F1E1B] dark:text-slate-200 text-xs">Restore Starter Catalog</p>
             <p className="text-[11px] text-[#645F57] dark:text-slate-400">
@@ -205,7 +205,7 @@ export function SettingsView({
               onResetSeed();
               showToast('Restored Starter Skills', 'Registry reset to the 12 starter skills.');
             }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-slate-800 dark:hover:bg-slate-700 text-[#1F1E1B] dark:text-slate-300 font-semibold border border-[#E5DFD5] dark:border-slate-700 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F3EFEA] hover:bg-[#EAE4DC] dark:bg-[#1f1f1f] dark:hover:bg-[#2a2a2a] text-[#1F1E1B] dark:text-slate-300 font-semibold border border-[#E5DFD5] dark:border-[#3a3a3a] transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset to Starters</span>

@@ -161,7 +161,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     <div className="space-y-8 max-w-4xl text-xs">
       <div>
         <h2 className="text-xl font-bold text-[#1F1E1B] dark:text-white tracking-tight flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-[#C15F3C] dark:text-cyan-400" />
+          <BookOpen className="w-5 h-5 text-[#C15F3C] dark:text-amber-400" />
           <span>Agent Skill Registry Documentation</span>
         </h2>
         <p className="text-xs text-[#645F57] dark:text-slate-400 mt-1">
@@ -170,9 +170,9 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       </div>
 
       {/* Guide Card 1 */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-3 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-3 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
         <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm flex items-center gap-2">
-          <Layers className="w-4 h-4 text-[#C15F3C] dark:text-cyan-400" />
+          <Layers className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
           <span>1. What is an AI Agent Skill?</span>
         </h3>
         <p className="text-[#645F57] dark:text-slate-300 leading-relaxed">
@@ -186,7 +186,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       </div>
 
       {/* Guide Card 2 */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-3 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-3 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
         <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm flex items-center gap-2">
           <Wand2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>2. Adding a New Skill: Step-by-Step</span>
@@ -196,36 +196,36 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             <strong className="text-[#1F1E1B] dark:text-white">Name & Category:</strong> Choose a clear name (e.g. "Query SQL Database") and select from the 8 official domains (Search, Data, Files, Communication, Developer Tools, Vision, RAG, Productivity).
           </li>
           <li>
-            <strong className="text-[#1F1E1B] dark:text-white">Author & Versioning:</strong> Follow semantic versioning (<code className="text-[#C15F3C] dark:text-cyan-300 font-mono">1.0.0</code>) so downstream agent teams can track contract upgrades.
+            <strong className="text-[#1F1E1B] dark:text-white">Author & Versioning:</strong> Follow semantic versioning (<code className="text-[#C15F3C] dark:text-amber-300 font-mono">1.0.0</code>) so downstream agent teams can track contract upgrades.
           </li>
           <li>
-            <strong className="text-[#1F1E1B] dark:text-white">Input Schema Parameters:</strong> Add each argument name as a valid identifier (<code className="text-[#C15F3C] dark:text-cyan-300 font-mono">^[a-zA-Z_][a-zA-Z0-9_]*$</code>). Always include a descriptive explanation so the LLM knows what to pass.
+            <strong className="text-[#1F1E1B] dark:text-white">Input Schema Parameters:</strong> Add each argument name as a valid identifier (<code className="text-[#C15F3C] dark:text-amber-300 font-mono">^[a-zA-Z_][a-zA-Z0-9_]*$</code>). Always include a descriptive explanation so the LLM knows what to pass.
           </li>
           <li>
             <strong className="text-[#1F1E1B] dark:text-white">Execution Bounds:</strong> Define a realistic timeout (e.g. 8000ms) and retry policy to protect against hanging remote APIs.
           </li>
           <li>
-            <strong className="text-[#1F1E1B] dark:text-white">Live Testing:</strong> Use the built-in <span className="text-[#C15F3C] dark:text-cyan-300 font-semibold">Call Simulator</span> tab to verify parameters and mock responses before deploying.
+            <strong className="text-[#1F1E1B] dark:text-white">Live Testing:</strong> Use the built-in <span className="text-[#C15F3C] dark:text-amber-300 font-semibold">Call Simulator</span> tab to verify parameters and mock responses before deploying.
           </li>
         </ol>
       </div>
 
       {/* Guide Card 3: Code Integration Snippets */}
-      <div className="rounded-2xl border border-[#E5DFD5] dark:border-indigo-500/25 bg-[#FFFFFF] dark:bg-[#0D1424] p-6 space-y-4 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <div className="rounded-2xl border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1a1a1a] p-6 space-y-4 claude-card-shadow dark:shadow-[0_0_20px_rgba(0,0,0,0.5)]">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-bold text-[#1F1E1B] dark:text-slate-100 text-sm flex items-center gap-2">
-            <Code2 className="w-4 h-4 text-[#C15F3C] dark:text-cyan-400" />
+            <Code2 className="w-4 h-4 text-[#C15F3C] dark:text-amber-400" />
             <span>3. Connecting Registry Skills to LLM Agents</span>
           </h3>
 
-          <div className="flex rounded-xl bg-[#F8F5EF] dark:bg-[#070A13] p-0.5 border border-[#E5DFD5] dark:border-slate-800 text-xs font-semibold">
+          <div className="flex rounded-xl bg-[#F8F5EF] dark:bg-[#0a0a0a] p-0.5 border border-[#E5DFD5] dark:border-[#3a3a3a] text-xs font-semibold">
             {(['openai', 'anthropic', 'gemini', 'mcp'] as const).map((key) => (
               <button
                 key={key}
                 onClick={() => setActiveSnippet(key)}
                 className={`px-3 py-1 rounded-lg uppercase tracking-wider text-[10px] transition-all ${
                   activeSnippet === key
-                    ? 'text-[#C15F3C] dark:text-cyan-300 border-b-2 border-[#C15F3C] dark:border-cyan-300'
+                    ? 'text-[#C15F3C] dark:text-amber-300 border-b-2 border-[#C15F3C] dark:border-amber-300'
                     : 'text-xs font-semibold text-[#645F57] dark:text-slate-400 hover:text-[#1F1E1B] dark:hover:text-slate-200'
                 }`}
               >
@@ -236,13 +236,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         </div>
 
         <p className="text-[#645F57] dark:text-slate-400 leading-relaxed">
-          Copy schemas directly from the <span className="text-[#C15F3C] dark:text-cyan-300 font-medium">My Registry</span> card or use the <span className="text-[#C15F3C] dark:text-cyan-300 font-medium">Export Agent Config</span> tool to generate full multi-tool packages.
+          Copy schemas directly from the <span className="text-[#C15F3C] dark:text-amber-300 font-medium">My Registry</span> card or use the <span className="text-[#C15F3C] dark:text-amber-300 font-medium">Export Agent Config</span> tool to generate full multi-tool packages.
         </p>
 
-        <div className="relative bg-[#F8F5EF] dark:bg-[#111B30] border border-[#E5DFD5] dark:border-indigo-500/20 rounded-xl p-4 overflow-auto font-mono text-xs text-[#1F1E1B] dark:text-indigo-200">
+        <div className="relative bg-[#F8F5EF] dark:bg-[#1f1f1f] border border-[#E5DFD5] dark:border-[#2a2a2a] rounded-xl p-4 overflow-auto font-mono text-xs text-[#1F1E1B] dark:text-amber-100">
           <button
             onClick={() => handleCopy(snippets[activeSnippet], activeSnippet.toUpperCase())}
-            className="absolute top-3 right-3 p-1.5 rounded-lg border border-[#E5DFD5] dark:border-slate-700 bg-[#FFFFFF] dark:bg-slate-800 text-[#918B80] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors shadow-sm"
+            className="absolute top-3 right-3 p-1.5 rounded-lg border border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#1f1f1f] text-[#918B80] hover:text-[#1F1E1B] hover:bg-[#F3EFEA] dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-[#2a2a2a] transition-colors shadow-sm"
             title="Copy snippet"
           >
             {copiedKey === activeSnippet.toUpperCase() ? (

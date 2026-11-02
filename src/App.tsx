@@ -709,7 +709,7 @@ function MainApp() {
                 {filteredMarketplaceSkills.map((mktSkill) => (
                   <div
                     key={mktSkill.id}
-                    className="rounded-2xl border border-[#E5DFD5] dark:border-amber-500/25 bg-[#FFFFFF] dark:bg-[#1a1a1a] p-5 flex flex-col justify-between hover:border-[#C15F3C]/40 dark:hover:border-amber-400/50 transition-all claude-card-shadow dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] group"
+                    className="rounded-2xl border border-[#E5DFD5] dark:border-amber-500/25 bg-[#FFFFFF] dark:bg-[#1a1a1a] p-5 flex flex-col justify-between hover:border-[#C15F3C]/40 dark:hover:border-amber-400/50 transition-all claude-card-shadow dark:hover:shadow-[0_0_20px_rgba(245,158,11,0.15)] group"
                   >
                     <div>
                       {/* Clean kicker: Source • Category • Stars */}
@@ -772,7 +772,7 @@ function MainApp() {
 
                       <button
                         onClick={() => setMarketplaceInstallSkill(mktSkill)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] transition-all"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] dark:bg-gradient-to-r dark:from-amber-600 dark:to-orange-600 text-white text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all"
                       >
                         <Download className="w-3 h-3" />
                         <span>Install to Registry</span>

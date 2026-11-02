@@ -168,7 +168,7 @@ export function MarketplaceInstallModal({
               {skill.inputSchema?.map((p) => (
                 <div
                   key={p.name}
-                  className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-transparent hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors border border-[#E5DFD5] dark:border-[#2a2a2a] flex items-center justify-between text-xs"
+                  className="p-2.5 rounded-xl bg-[#F8F5EF] dark:bg-transparent hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] transition-colors border border-[#E5DFD5] dark:border-[#2a2a2a] flex items-center justify-between text-xs"
                 >
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-[#C15F3C] dark:text-amber-300 font-semibold">{p.name}</span>

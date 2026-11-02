@@ -3,7 +3,7 @@ import { SkillCategory, ExecutionType, SkillStatus } from '../types/skill.ts';
 export function getCategoryBadgeClass(category: SkillCategory): string {
   switch (category) {
     case 'Search':
-      return 'bg-blue-50 text-blue-800 border-blue-200/80 dark:bg-cyan-500/10 dark:text-cyan-300 dark:border-cyan-500/30';
+      return 'bg-blue-50 text-blue-800 border-blue-200/80 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/30';
     case 'Data':
       return 'bg-emerald-50 text-emerald-800 border-emerald-200/80 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/30';
     case 'Files':
@@ -11,11 +11,11 @@ export function getCategoryBadgeClass(category: SkillCategory): string {
     case 'Communication':
       return 'bg-rose-50 text-rose-800 border-rose-200/80 dark:bg-pink-500/10 dark:text-pink-300 dark:border-pink-500/30';
     case 'Developer Tools':
-      return 'bg-[#C15F3C]/10 text-[#C15F3C] border-[#C15F3C]/25 dark:bg-cyan-500/15 dark:text-cyan-300 dark:border-cyan-400/30';
+      return 'bg-[#C15F3C]/10 text-[#C15F3C] border-[#C15F3C]/25 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-400/30';
     case 'Vision':
       return 'bg-purple-50 text-purple-800 border-purple-200/80 dark:bg-purple-500/10 dark:text-purple-300 dark:border-purple-500/30';
     case 'RAG':
-      return 'bg-indigo-50 text-indigo-900 border-indigo-200/80 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30';
+      return 'bg-indigo-50 text-indigo-900 border-indigo-200/80 dark:bg-amber-500/15 dark:text-amber-300 dark:border-[#3a3a3a]';
     case 'Productivity':
       return 'bg-teal-50 text-teal-800 border-teal-200/80 dark:bg-teal-500/10 dark:text-teal-300 dark:border-teal-500/30';
     default:

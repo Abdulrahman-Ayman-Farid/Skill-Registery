@@ -54,7 +54,7 @@ const CATEGORY_META: Record<
   RAG: {
     icon: Brain,
     description: 'Vector embeddings lookup, semantic similarity search, chunk retrieval, and graph RAG.',
-    colorClass: 'bg-indigo-100/70 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300',
+    colorClass: 'bg-indigo-100/70 text-indigo-700 dark:bg-amber-500/15 dark:text-amber-300',
   },
   Productivity: {
     icon: CheckCircle2,

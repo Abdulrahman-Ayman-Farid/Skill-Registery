@@ -873,7 +873,7 @@ export function SkillEditorModal({
             <button
               type="submit"
               disabled={isSaving}
-              className="px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] text-white dark:bg-amber-500 dark:hover:bg-amber-400 active:scale-[0.98] text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-5 py-2 rounded-xl bg-[#C15F3C] hover:bg-[#A84E2E] text-white dark:bg-amber-500 dark:hover:bg-amber-400 active:scale-[0.98] text-xs font-semibold shadow-md shadow-[#C15F3C]/20 dark:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isSaving ? 'Saving...' : isEditing ? 'Save Changes' : 'Create Skill'}
             </button>

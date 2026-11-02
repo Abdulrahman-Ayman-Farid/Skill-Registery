@@ -41,11 +41,11 @@
     --color-vault-accent-border: rgba(193, 95, 60, 0.25);
 
     /* Gemini Cosmic & Neon Dark Mode */
-    --color-gemini-bg: #070A13;
-    --color-gemini-sidebar: #0A0F1D;
-    --color-gemini-card: #0D1424;
-    --color-gemini-surface: #111B30;
-    --color-gemini-surface-hover: #16233E;
+    --color-gemini-bg: #0a0a0a;
+    --color-gemini-sidebar: #111111;
+    --color-gemini-card: #1a1a1a;
+    --color-gemini-surface: #1f1f1f;
+    --color-gemini-surface-hover: #2a2a2a;
     --color-gemini-border: rgba(99, 102, 241, 0.22);
     --color-gemini-border-subtle: rgba(148, 163, 184, 0.12);
     --color-gemini-text: #F8FAFC;

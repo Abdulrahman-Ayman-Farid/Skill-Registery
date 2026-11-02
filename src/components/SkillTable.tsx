@@ -80,7 +80,7 @@ export function SkillTable({
                 <tr
                   key={skill.id}
                   onClick={() => onViewDetails(skill)}
-                  className={`hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors cursor-pointer ${
+                  className={`hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] transition-colors cursor-pointer ${
                     isSelected ? 'bg-[#FAF8F5] dark:bg-amber-950/25' : ''
                   }`}
                 >

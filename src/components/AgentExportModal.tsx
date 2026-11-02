@@ -185,7 +185,7 @@ export function AgentExportModal({
                     className={`flex items-start gap-2.5 p-3 rounded-xl border cursor-pointer transition-all ${
                       isChecked
                         ? 'border-[#C15F3C] bg-[#FAF8F5] dark:border-amber-400/60 dark:bg-amber-950/30'
-                        : 'border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#0a0a0a] hover:bg-[#F8F5EF] dark:hover:bg-[#111B30] transition-colors'
+                        : 'border-[#E5DFD5] dark:border-[#3a3a3a] bg-[#FFFFFF] dark:bg-[#0a0a0a] hover:bg-[#F8F5EF] dark:hover:bg-[#1f1f1f] transition-colors'
                     }`}
                   >
                     <input
